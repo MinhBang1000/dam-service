@@ -10,7 +10,7 @@ public class RetrieveRiverMapper implements IMapper<River, RetrieveRiverResDTO> 
     @Override
     public RetrieveRiverResDTO convert(River source) {
         return RetrieveRiverResDTO.builder()
-                .id(source.getId())
+                .id(source.getId().toString())
                 .name(source.getName())
                 .location(source.getLocation())
                 .build();
