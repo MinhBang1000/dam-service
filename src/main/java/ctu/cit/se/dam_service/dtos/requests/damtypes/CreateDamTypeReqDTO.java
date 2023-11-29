@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 public class CreateDamTypeReqDTO  {
-    @JsonProperty("damName")
+    @JsonProperty("damTypeName")
     private String name;
-    @JsonProperty("damDescription")
+    @JsonProperty("damTypeDescription")
     private String description;
 }

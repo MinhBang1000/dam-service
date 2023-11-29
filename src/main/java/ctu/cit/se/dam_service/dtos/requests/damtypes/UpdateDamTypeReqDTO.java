@@ -13,8 +13,8 @@ import lombok.NoArgsConstructor;
 public class UpdateDamTypeReqDTO  {
     @JsonProperty("damTypeId")
     private String id;
-    @JsonProperty("damName")
+    @JsonProperty("damTypeName")
     private String name;
-    @JsonProperty("damDescription")
+    @JsonProperty("damTypeDescription")
     private String description;
 }
