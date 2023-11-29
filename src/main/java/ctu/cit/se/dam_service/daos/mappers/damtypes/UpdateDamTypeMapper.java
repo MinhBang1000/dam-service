@@ -2,12 +2,9 @@ package ctu.cit.se.dam_service.daos.mappers.damtypes;
 
 import ctu.cit.se.dam_service.daos.mappers.IMapper;
 import ctu.cit.se.dam_service.dtos.requests.damtypes.UpdateDamTypeReqDTO;
-import ctu.cit.se.dam_service.dtos.requests.rivers.UpdateRiverReqDTO;
 import ctu.cit.se.dam_service.entites.DamType;
-import ctu.cit.se.dam_service.entites.River;
 import ctu.cit.se.dam_service.exceptions.messages.CustomExceptionMessage;
 import ctu.cit.se.dam_service.repositories.IDamTypeRepository;
-import ctu.cit.se.dam_service.repositories.IRiverRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

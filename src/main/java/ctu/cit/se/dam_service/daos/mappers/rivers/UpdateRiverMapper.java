@@ -1,7 +1,6 @@
 package ctu.cit.se.dam_service.daos.mappers.rivers;
 
 import ctu.cit.se.dam_service.daos.mappers.IMapper;
-import ctu.cit.se.dam_service.dtos.requests.rivers.CreateRiverReqDTO;
 import ctu.cit.se.dam_service.dtos.requests.rivers.UpdateRiverReqDTO;
 import ctu.cit.se.dam_service.entites.River;
 import ctu.cit.se.dam_service.exceptions.messages.CustomExceptionMessage;

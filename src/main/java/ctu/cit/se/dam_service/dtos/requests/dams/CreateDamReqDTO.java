@@ -1,8 +1,6 @@
 package ctu.cit.se.dam_service.dtos.requests.dams;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import ctu.cit.se.dam_service.dtos.responses.damtypes.RetrieveDamTypeResDTO;
-import ctu.cit.se.dam_service.dtos.responses.rivers.RetrieveRiverResDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

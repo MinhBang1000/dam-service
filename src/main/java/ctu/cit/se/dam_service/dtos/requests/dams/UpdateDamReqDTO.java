@@ -1,21 +1,18 @@
 package ctu.cit.se.dam_service.dtos.requests.dams;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import ctu.cit.se.dam_service.dtos.responses.damtypes.RetrieveDamTypeResDTO;
-import ctu.cit.se.dam_service.dtos.responses.rivers.RetrieveRiverResDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Data
-public class UpdateDamReqDTO {
+public class UpdateDamReqDTO  {
     @JsonProperty("damId")
     private String id;
     @JsonProperty("damName")

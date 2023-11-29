@@ -2,9 +2,7 @@ package ctu.cit.se.dam_service.daos.mappers.dams;
 
 import ctu.cit.se.dam_service.daos.mappers.IMapper;
 import ctu.cit.se.dam_service.dtos.requests.dams.CreateDamReqDTO;
-import ctu.cit.se.dam_service.dtos.requests.damtypes.CreateDamTypeReqDTO;
 import ctu.cit.se.dam_service.entites.Dam;
-import ctu.cit.se.dam_service.entites.DamType;
 import ctu.cit.se.dam_service.exceptions.messages.CustomExceptionMessage;
 import ctu.cit.se.dam_service.repositories.IDamTypeRepository;
 import ctu.cit.se.dam_service.repositories.IRiverRepository;

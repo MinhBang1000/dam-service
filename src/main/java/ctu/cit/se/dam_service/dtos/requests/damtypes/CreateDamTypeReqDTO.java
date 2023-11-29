@@ -6,13 +6,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.UUID;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Data
-public class CreateDamTypeReqDTO {
+public class CreateDamTypeReqDTO  {
     @JsonProperty("damName")
     private String name;
     @JsonProperty("damDescription")

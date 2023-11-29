@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Data
-public class CreateRiverReqDTO {
+public class CreateRiverReqDTO  {
     @JsonProperty("riverName")
     private String name;
     @JsonProperty("riverLocation")
