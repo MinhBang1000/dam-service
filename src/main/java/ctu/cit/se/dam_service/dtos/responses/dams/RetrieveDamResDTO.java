@@ -29,6 +29,8 @@ public class RetrieveDamResDTO {
     private Double longtitude;
     @JsonProperty("damLatitude")
     private Double latitude;
+    @JsonProperty("damIsLock")
+    private Boolean isLock;
     @JsonProperty("damType")
     private RetrieveDamTypeResDTO damType;
     @JsonProperty("damRiver")

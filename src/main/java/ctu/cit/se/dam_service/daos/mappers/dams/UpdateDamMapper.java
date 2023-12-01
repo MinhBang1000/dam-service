@@ -32,6 +32,7 @@ public class UpdateDamMapper implements IMapper<UpdateDamReqDTO, Dam> {
                 .constructedAt(Objects.isNull(source.getConstructedAt()) ? dam.getConstructedAt() : source.getConstructedAt())
                 .height(Objects.isNull(source.getHeight()) ? dam.getHeight() : source.getHeight())
                 .damType(damType)
+                .isLock(Objects.isNull(source.getIsLock()) ? dam.getIsLock() : source.getIsLock())
                 .river(river)
                 .capacity(Objects.isNull(source.getCapacity()) ? dam.getCapacity() : source.getCapacity())
                 .longtitude(Objects.isNull(source.getLongtitude()) ? dam.getLongtitude() : source.getLongtitude())

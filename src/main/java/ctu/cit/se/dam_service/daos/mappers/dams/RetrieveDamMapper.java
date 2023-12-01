@@ -29,6 +29,7 @@ public class RetrieveDamMapper implements IMapper<Dam, RetrieveDamResDTO> {
                 .id(source.getId().toString())
                 .name(source.getName())
                 .capacity(source.getCapacity())
+                .isLock(source.getIsLock())
                 .constructedAt(source.getConstructedAt())
                 .height(source.getHeight())
                 .longtitude(source.getLongtitude())

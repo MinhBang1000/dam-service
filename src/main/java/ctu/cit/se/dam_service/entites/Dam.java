@@ -31,6 +31,8 @@ public class Dam {
     private Double longtitude;
     @Column(name = "dam_latitude")
     private Double latitude;
+    @Column(name = "dam_is_lock")
+    private Boolean isLock;
     @ManyToOne
     @JoinColumn(name = "dam_type_id")
     private DamType damType;

@@ -27,6 +27,8 @@ public class UpdateDamReqDTO  {
     private Double longtitude;
     @JsonProperty("damLatitude")
     private Double latitude;
+    @JsonProperty("damIsLock")
+    private Boolean isLock;
     @JsonProperty("damTypeId")
     private String damTypeId;
     @JsonProperty("damRiverId")

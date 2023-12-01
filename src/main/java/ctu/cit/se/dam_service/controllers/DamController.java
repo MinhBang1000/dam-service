@@ -10,7 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/dams")
@@ -31,8 +33,8 @@ public class DamController {
     }
 
     @GetMapping
-    public ResponseEntity<List<RetrieveDamResDTO>> list() {
-        return new ResponseEntity<>(damApplication.list(), HttpStatus.OK);
+    public ResponseEntity<List<RetrieveDamResDTO>> list(@RequestParam(name = "isLock", required = false) Boolean isLock) {
+        return new ResponseEntity<>(Objects.nonNull(isLock) ? damApplication.list().stream().filter(retrieveDamResDTO -> retrieveDamResDTO.getIsLock() == isLock).collect(Collectors.toList()) : damApplication.list(), HttpStatus.OK);
     }
 
     @GetMapping("/{damId}")
