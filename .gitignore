@@ -34,7 +34,5 @@ build/
 
 # Customize
 */target
-*/pom.xml
-pom.xml
 .env
 !/src/main/resources/
