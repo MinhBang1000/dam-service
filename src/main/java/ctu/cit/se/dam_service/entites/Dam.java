@@ -23,6 +23,8 @@ public class Dam {
     private String name;
     @Column(name = "dam_construction_date")
     private LocalDate constructedAt;
+    @Column(name = "dam_description")
+    private String description;
     @Column(name = "dam_height")
     private Double height;
     @Column(name = "dam_capacity")

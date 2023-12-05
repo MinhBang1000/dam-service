@@ -21,6 +21,8 @@ public class RetrieveDamResDTO {
     private String name;
     @JsonProperty("damConstructedAt")
     private LocalDate constructedAt;
+    @JsonProperty("damDescription")
+    private String description;
     @JsonProperty("damHeight")
     private Double height;
     @JsonProperty("damCapacity")
