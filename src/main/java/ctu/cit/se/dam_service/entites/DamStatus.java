@@ -22,6 +22,6 @@ public class DamStatus {
     private UUID id;
     @Column(name = "dam_status_name")
     private String name;
-    @OneToMany(mappedBy = "dam", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "damStatus", cascade = CascadeType.ALL)
     private List<DamSchedule> damSchedules = new ArrayList<>();
 }
