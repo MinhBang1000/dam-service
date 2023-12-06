@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -39,4 +41,6 @@ public class Dam {
     @ManyToOne
     @JoinColumn(name = "dam_river_id")
     private River river;
+    @OneToMany(mappedBy = "dam", cascade = CascadeType.ALL)
+    private List<DamSchedule> damSchedules = new ArrayList<>();
 }

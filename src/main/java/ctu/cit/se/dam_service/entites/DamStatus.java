@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -20,4 +22,6 @@ public class DamStatus {
     private UUID id;
     @Column(name = "dam_status_name")
     private String name;
+    @OneToMany(mappedBy = "dam", cascade = CascadeType.ALL)
+    private List<DamSchedule> damSchedules = new ArrayList<>();
 }
