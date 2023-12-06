@@ -14,6 +14,6 @@ public interface IDamStatusApplication {
     void create(CreateDamStatusReqDTO createDamStatusReqDTO);
     void update(UpdateDamStatusReqDTO updateDamStatusReqDTO);
     List<RetrieveDamStatusResDTO> list();
-    RetrieveDamStatusResDTO retrieve(Long damStatusId);
-    void delete(Long damStatusId);
+    RetrieveDamStatusResDTO retrieve(UUID damStatusId);
+    void delete(UUID damStatusId);
 }

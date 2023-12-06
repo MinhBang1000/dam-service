@@ -25,7 +25,7 @@ public class UpdateDamScheduleMapper implements IMapper<UpdateDamScheduleReqDTO,
     @Override
     public DamSchedule convert(UpdateDamScheduleReqDTO source) {
         var damSchedule = damScheduleRepository.findById(UUID.fromString(source.getId())).orElseThrow(() -> new IllegalArgumentException(CustomExceptionMessage.DAM_SCHEDULE_NOT_FOUND_BY_ID));
-        var damStatus = damStatusRepository.findById(Long.parseLong(source.getDamStatusId())).orElseThrow(() -> new IllegalArgumentException(CustomExceptionMessage.DAM_STATUS_NOT_FOUND_BY_ID));
+        var damStatus = damStatusRepository.findById(UUID.fromString(source.getDamStatusId())).orElseThrow(() -> new IllegalArgumentException(CustomExceptionMessage.DAM_STATUS_NOT_FOUND_BY_ID));
         return DamSchedule.builder()
                 .damStatus(Objects.isNull(source.getDamStatusId()) ? damStatus : damSchedule.getDamStatus())
                 .id(damSchedule.getId())

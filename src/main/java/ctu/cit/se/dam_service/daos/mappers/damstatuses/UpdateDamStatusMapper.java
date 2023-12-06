@@ -22,7 +22,7 @@ public class UpdateDamStatusMapper implements IMapper<UpdateDamStatusReqDTO, Dam
     private IDamStatusRepository damStatusRepository;
     @Override
     public DamStatus convert(UpdateDamStatusReqDTO source) {
-        var damStatus = damStatusRepository.findById(Long.parseLong(source.getId())).orElseThrow(() -> new IllegalArgumentException(CustomExceptionMessage.DAM_STATUS_NOT_FOUND_BY_ID));
-        return DamStatus.builder().name(Objects.isNull(source.getName()) ? damStatus.getName() : source.getName()).build();
+        var damStatus = damStatusRepository.findById(UUID.fromString(source.getId())).orElseThrow(() -> new IllegalArgumentException(CustomExceptionMessage.DAM_STATUS_NOT_FOUND_BY_ID));
+        return DamStatus.builder().id(UUID.fromString(source.getId())).name(Objects.isNull(source.getName()) ? damStatus.getName() : source.getName()).build();
     }
 }

@@ -19,7 +19,7 @@ public class RetrieveDamStatusMapper implements IMapper<DamStatus, RetrieveDamSt
     @Override
     public RetrieveDamStatusResDTO convert(DamStatus source) {
         return RetrieveDamStatusResDTO.builder()
-                .id(source.getName())
+                .id(source.getId().toString())
                 .name(source.getName())
                 .build();
     }

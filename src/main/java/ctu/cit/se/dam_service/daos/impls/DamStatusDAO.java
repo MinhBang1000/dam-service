@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -42,13 +43,13 @@ public class DamStatusDAO implements IDamStatusDAO {
     }
 
     @Override
-    public RetrieveDamStatusResDTO retrieve(Long damStatusId) {
+    public RetrieveDamStatusResDTO retrieve(UUID damStatusId) {
         var damStatus = damStatusRepository.findById(damStatusId).orElseThrow(() -> new IllegalArgumentException(CustomExceptionMessage.DAM_STATUS_NOT_FOUND_BY_ID));
         return retrieveMapper.convert(damStatus);
     }
 
     @Override
-    public void delete(Long damStatusId) {
+    public void delete(UUID damStatusId) {
         var damStatus = damStatusRepository.findById(damStatusId).orElseThrow(() -> new IllegalArgumentException(CustomExceptionMessage.DAM_STATUS_NOT_FOUND_BY_ID));
         damStatusRepository.delete(damStatus);
     }

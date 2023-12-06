@@ -39,14 +39,14 @@ public class DamStatusController {
         return new ResponseEntity<>(damStatusApplication.list(), HttpStatus.OK);
     }
 
-    @GetMapping("/{damId}")
-    public ResponseEntity<RetrieveDamStatusResDTO> retrieve(@PathVariable String damId) {
-        return new ResponseEntity<>(damStatusApplication.retrieve(Long.parseLong(damId)), HttpStatus.OK);
+    @GetMapping("/{damStatusId}")
+    public ResponseEntity<RetrieveDamStatusResDTO> retrieve(@PathVariable String damStatusId) {
+        return new ResponseEntity<>(damStatusApplication.retrieve(UUID.fromString(damStatusId)), HttpStatus.OK);
     }
 
-    @DeleteMapping("/{damId}")
-    public ResponseEntity<Void> delete(@PathVariable String damId) {
-        damStatusApplication.delete(Long.parseLong(damId));
+    @DeleteMapping("/{damStatusId}")
+    public ResponseEntity<Void> delete(@PathVariable String damStatusId) {
+        damStatusApplication.delete(UUID.fromString(damStatusId));
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

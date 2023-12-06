@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.UUID;
+
 @Component
 public class DamStatusApplication implements IDamStatusApplication {
     @Autowired
@@ -30,12 +32,12 @@ public class DamStatusApplication implements IDamStatusApplication {
     }
 
     @Override
-    public RetrieveDamStatusResDTO retrieve(Long damStatusId) {
+    public RetrieveDamStatusResDTO retrieve(UUID damStatusId) {
         return damStatusDAO.retrieve(damStatusId);
     }
 
     @Override
-    public void delete(Long damStatusId) {
+    public void delete(UUID damStatusId) {
         damStatusDAO.delete(damStatusId);
     }
 }
