@@ -24,6 +24,8 @@ public class RetrieveDamScheduleResDTO {
     private LocalDateTime beginAt;
     @JsonProperty("damScheduleEndAt")
     private LocalDateTime endAt;
+    @JsonProperty("damScheduleDescription")
+    private String description;
     @JsonProperty("damScheduleDam")
     private RetrieveDamResDTO dam;
     @JsonProperty("damScheduleDamStatus")

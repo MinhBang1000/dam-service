@@ -20,6 +20,8 @@ public class UpdateDamScheduleReqDTO  {
     private LocalDateTime beginAt;
     @JsonProperty("damScheduleEndAt")
     private LocalDateTime endAt;
+    @JsonProperty("damScheduleDescription")
+    private String description;
     @JsonProperty("damScheduleDamStatusId")
     private String damStatusId;
 }

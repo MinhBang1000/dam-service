@@ -27,6 +27,7 @@ public class CreateDamScheduleMapper implements IMapper<CreateDamScheduleReqDTO,
         return DamSchedule.builder()
                 .dam(dam)
                 .damStatus(damStatus)
+                .description(source.getDescription())
                 .beginAt(source.getBeginAt())
                 .endAt(source.getEndAt())
                 .build();

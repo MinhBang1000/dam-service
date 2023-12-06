@@ -29,8 +29,9 @@ public class UpdateDamScheduleMapper implements IMapper<UpdateDamScheduleReqDTO,
         return DamSchedule.builder()
                 .damStatus(Objects.isNull(source.getDamStatusId()) ? damStatus : damSchedule.getDamStatus())
                 .id(damSchedule.getId())
-                .beginAt(source.getBeginAt())
-                .endAt(source.getEndAt())
+                .beginAt(Objects.isNull(source.getBeginAt()) ? damSchedule.getBeginAt() : source.getBeginAt())
+                .endAt(Objects.isNull(source.getEndAt()) ? damSchedule.getEndAt() : source.getEndAt())
+                .description(Objects.isNull(source.getDescription()) ? damSchedule.getDescription() : source.getDescription())
                 .build();
     }
 }

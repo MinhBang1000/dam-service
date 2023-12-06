@@ -23,6 +23,8 @@ public class DamSchedule {
     private LocalDateTime beginAt;
     @Column(name = "dam_schedule_end_at")
     private LocalDateTime endAt;
+    @Column(name = "dam_schedule_description")
+    private String description;
     @ManyToOne
     @JoinColumn(name = "dam_id")
     private Dam dam;
