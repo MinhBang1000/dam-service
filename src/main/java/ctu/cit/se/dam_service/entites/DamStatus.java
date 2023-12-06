@@ -13,6 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "dam_statuses")
 public class DamStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
