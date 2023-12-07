@@ -19,7 +19,6 @@ public class RetrieveDamScheduleMapper implements IMapper<DamSchedule, RetrieveD
     @Autowired
     private IMapper<DamStatus, RetrieveDamStatusResDTO> damStatusMapper;
 
-
     @Override
     public RetrieveDamScheduleResDTO convert(DamSchedule source) {
         return RetrieveDamScheduleResDTO.builder()
