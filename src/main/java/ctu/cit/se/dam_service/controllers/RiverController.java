@@ -6,6 +6,7 @@ import ctu.cit.se.dam_service.dtos.requests.dams.CreateDamReqDTO;
 import ctu.cit.se.dam_service.dtos.requests.dams.UpdateDamReqDTO;
 import ctu.cit.se.dam_service.dtos.requests.rivers.CreateRiverReqDTO;
 import ctu.cit.se.dam_service.dtos.requests.rivers.UpdateRiverReqDTO;
+import ctu.cit.se.dam_service.dtos.responses.commands.CommandResDTO;
 import ctu.cit.se.dam_service.dtos.responses.dams.RetrieveDamResDTO;
 import ctu.cit.se.dam_service.dtos.responses.rivers.RetrieveRiverResDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,15 +24,13 @@ public class RiverController {
     private IRiverApplication riverApplication;
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody CreateRiverReqDTO createRiverReqDTO) {
-        riverApplication.create(createRiverReqDTO);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity<CommandResDTO> create(@RequestBody CreateRiverReqDTO createRiverReqDTO) {
+        return new ResponseEntity<>(riverApplication.create(createRiverReqDTO), HttpStatus.CREATED);
     }
 
     @PatchMapping
-    public ResponseEntity<Void> update(@RequestBody UpdateRiverReqDTO updateRiverReqDTO) {
-        riverApplication.update(updateRiverReqDTO);
-        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    public ResponseEntity<CommandResDTO> update(@RequestBody UpdateRiverReqDTO updateRiverReqDTO) {
+        return new ResponseEntity<>(riverApplication.update(updateRiverReqDTO), HttpStatus.ACCEPTED);
     }
 
     @GetMapping

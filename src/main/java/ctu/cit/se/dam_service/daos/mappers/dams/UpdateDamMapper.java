@@ -24,8 +24,8 @@ public class UpdateDamMapper implements IMapper<UpdateDamReqDTO, Dam> {
     @Override
     public Dam convert(UpdateDamReqDTO source) {
         var dam = damRepository.findById(UUID.fromString(source.getId())).orElseThrow(() -> new IllegalArgumentException(CustomExceptionMessage.DAM_NOT_FOUND_BY_ID));
-        var river = riverRepository.findById(UUID.fromString(source.getRiverId())).orElseThrow(() -> new IllegalArgumentException(CustomExceptionMessage.RIVER_NOT_FOUND_BY_ID));
-        var damType = damTypeRepository.findById(UUID.fromString(source.getDamTypeId())).orElseThrow(() -> new IllegalArgumentException(CustomExceptionMessage.DAM_TYPE_NOT_FOUND_BY_ID));
+        var river = Objects.isNull(source.getRiverId()) ? dam.getRiver() : riverRepository.findById(UUID.fromString(source.getRiverId())).orElseThrow(() -> new IllegalArgumentException(CustomExceptionMessage.RIVER_NOT_FOUND_BY_ID));
+        var damType = Objects.isNull(source.getDamTypeId()) ? dam.getDamType() : damTypeRepository.findById(UUID.fromString(source.getDamTypeId())).orElseThrow(() -> new IllegalArgumentException(CustomExceptionMessage.DAM_TYPE_NOT_FOUND_BY_ID));
         return Dam.builder()
                 .id(dam.getId())
                 .name(Objects.isNull(source.getName()) ? dam.getName() : source.getName())

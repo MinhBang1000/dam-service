@@ -4,6 +4,7 @@ import ctu.cit.se.dam_service.applications.specs.IDamApplication;
 import ctu.cit.se.dam_service.daos.specs.IDamDAO;
 import ctu.cit.se.dam_service.dtos.requests.dams.CreateDamReqDTO;
 import ctu.cit.se.dam_service.dtos.requests.dams.UpdateDamReqDTO;
+import ctu.cit.se.dam_service.dtos.responses.commands.CommandResDTO;
 import ctu.cit.se.dam_service.dtos.responses.dams.RetrieveDamResDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,13 +18,13 @@ public class DamApplication implements IDamApplication {
     private IDamDAO damDAO;
 
     @Override
-    public void create(CreateDamReqDTO createDamReqDTO) {
-        damDAO.create(createDamReqDTO);
+    public CommandResDTO create(CreateDamReqDTO createDamReqDTO) {
+        return damDAO.create(createDamReqDTO);
     }
 
     @Override
-    public void update(UpdateDamReqDTO updateDamReqDTO) {
-        damDAO.update(updateDamReqDTO);
+    public CommandResDTO update(UpdateDamReqDTO updateDamReqDTO) {
+        return damDAO.update(updateDamReqDTO);
     }
 
     @Override

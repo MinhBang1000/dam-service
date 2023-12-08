@@ -8,6 +8,7 @@ import ctu.cit.se.dam_service.dtos.requests.dams.CreateDamReqDTO;
 import ctu.cit.se.dam_service.dtos.requests.dams.UpdateDamReqDTO;
 import ctu.cit.se.dam_service.dtos.requests.damtypes.CreateDamTypeReqDTO;
 import ctu.cit.se.dam_service.dtos.requests.damtypes.UpdateDamTypeReqDTO;
+import ctu.cit.se.dam_service.dtos.responses.commands.CommandResDTO;
 import ctu.cit.se.dam_service.dtos.responses.dams.RetrieveDamResDTO;
 import ctu.cit.se.dam_service.dtos.responses.damtypes.RetrieveDamTypeResDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +23,13 @@ public class DamTypeApplication implements IDamTypeApplication {
     private IDamTypeDAO damTypeDAO;
 
     @Override
-    public void create(CreateDamTypeReqDTO createDamTypeReqDTO) {
-        damTypeDAO.create(createDamTypeReqDTO);
+    public CommandResDTO create(CreateDamTypeReqDTO createDamTypeReqDTO) {
+        return damTypeDAO.create(createDamTypeReqDTO);
     }
 
     @Override
-    public void update(UpdateDamTypeReqDTO updateDamTypeReqDTO) {
-        damTypeDAO.update(updateDamTypeReqDTO);
+    public CommandResDTO update(UpdateDamTypeReqDTO updateDamTypeReqDTO) {
+        return damTypeDAO.update(updateDamTypeReqDTO);
     }
 
     @Override

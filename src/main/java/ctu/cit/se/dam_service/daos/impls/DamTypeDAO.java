@@ -7,6 +7,7 @@ import ctu.cit.se.dam_service.dtos.requests.dams.CreateDamReqDTO;
 import ctu.cit.se.dam_service.dtos.requests.dams.UpdateDamReqDTO;
 import ctu.cit.se.dam_service.dtos.requests.damtypes.CreateDamTypeReqDTO;
 import ctu.cit.se.dam_service.dtos.requests.damtypes.UpdateDamTypeReqDTO;
+import ctu.cit.se.dam_service.dtos.responses.commands.CommandResDTO;
 import ctu.cit.se.dam_service.dtos.responses.dams.RetrieveDamResDTO;
 import ctu.cit.se.dam_service.dtos.responses.damtypes.RetrieveDamTypeResDTO;
 import ctu.cit.se.dam_service.entites.Dam;
@@ -33,13 +34,13 @@ public class DamTypeDAO implements IDamTypeDAO {
     private IMapper<DamType, RetrieveDamTypeResDTO> retrieveMapper;
 
     @Override
-    public void create(CreateDamTypeReqDTO createDamTypeReqDTO) {
-        damTypeRepository.save(createMapper.convert(createDamTypeReqDTO));
+    public CommandResDTO create(CreateDamTypeReqDTO createDamTypeReqDTO) {
+        return CommandResDTO.builder().id(damTypeRepository.save(createMapper.convert(createDamTypeReqDTO)).getId().toString()).build();
     }
 
     @Override
-    public void update(UpdateDamTypeReqDTO updateDamTypeReqDTO) {
-        damTypeRepository.save(updateMapper.convert(updateDamTypeReqDTO));
+    public CommandResDTO update(UpdateDamTypeReqDTO updateDamTypeReqDTO) {
+        return CommandResDTO.builder().id(damTypeRepository.save(updateMapper.convert(updateDamTypeReqDTO)).getId().toString()).build();
     }
 
     @Override

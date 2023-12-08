@@ -4,6 +4,7 @@ import ctu.cit.se.dam_service.daos.mappers.IMapper;
 import ctu.cit.se.dam_service.daos.specs.IDamScheduleDAO;
 import ctu.cit.se.dam_service.dtos.requests.damschedules.CreateDamScheduleReqDTO;
 import ctu.cit.se.dam_service.dtos.requests.damschedules.UpdateDamScheduleReqDTO;
+import ctu.cit.se.dam_service.dtos.responses.commands.CommandResDTO;
 import ctu.cit.se.dam_service.dtos.responses.damschedules.RetrieveDamScheduleResDTO;
 import ctu.cit.se.dam_service.entites.DamSchedule;
 import ctu.cit.se.dam_service.exceptions.messages.CustomExceptionMessage;
@@ -27,13 +28,13 @@ public class DamScheduleDAO implements IDamScheduleDAO {
     private IMapper<DamSchedule, RetrieveDamScheduleResDTO> retrieveMapper;
 
     @Override
-    public void create(CreateDamScheduleReqDTO createDamScheduleReqDTO) {
-        damScheduleRepository.save(createMapper.convert(createDamScheduleReqDTO));
+    public CommandResDTO create(CreateDamScheduleReqDTO createDamScheduleReqDTO) {
+        return CommandResDTO.builder().id(damScheduleRepository.save(createMapper.convert(createDamScheduleReqDTO)).getId().toString()).build();
     }
 
     @Override
-    public void update(UpdateDamScheduleReqDTO updateDamScheduleReqDTO) {
-        damScheduleRepository.save(updateMapper.convert(updateDamScheduleReqDTO));
+    public CommandResDTO update(UpdateDamScheduleReqDTO updateDamScheduleReqDTO) {
+        return CommandResDTO.builder().id(damScheduleRepository.save(updateMapper.convert(updateDamScheduleReqDTO)).getId().toString()).build();
     }
 
     @Override

@@ -8,6 +8,7 @@ import ctu.cit.se.dam_service.dtos.requests.dams.CreateDamReqDTO;
 import ctu.cit.se.dam_service.dtos.requests.dams.UpdateDamReqDTO;
 import ctu.cit.se.dam_service.dtos.requests.rivers.CreateRiverReqDTO;
 import ctu.cit.se.dam_service.dtos.requests.rivers.UpdateRiverReqDTO;
+import ctu.cit.se.dam_service.dtos.responses.commands.CommandResDTO;
 import ctu.cit.se.dam_service.dtos.responses.dams.RetrieveDamResDTO;
 import ctu.cit.se.dam_service.dtos.responses.rivers.RetrieveRiverResDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +23,13 @@ public class RiverApplication implements IRiverApplication {
     private IRiverDAO riverDAO;
 
     @Override
-    public void create(CreateRiverReqDTO createRiverReqDTO) {
-        riverDAO.create(createRiverReqDTO);
+    public CommandResDTO create(CreateRiverReqDTO createRiverReqDTO) {
+        return riverDAO.create(createRiverReqDTO);
     }
 
     @Override
-    public void update(UpdateRiverReqDTO updateRiverReqDTO) {
-        riverDAO.update(updateRiverReqDTO);
+    public CommandResDTO update(UpdateRiverReqDTO updateRiverReqDTO) {
+        return riverDAO.update(updateRiverReqDTO);
     }
 
     @Override

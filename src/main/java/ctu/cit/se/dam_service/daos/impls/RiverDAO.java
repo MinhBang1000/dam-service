@@ -7,6 +7,7 @@ import ctu.cit.se.dam_service.dtos.requests.damtypes.CreateDamTypeReqDTO;
 import ctu.cit.se.dam_service.dtos.requests.damtypes.UpdateDamTypeReqDTO;
 import ctu.cit.se.dam_service.dtos.requests.rivers.CreateRiverReqDTO;
 import ctu.cit.se.dam_service.dtos.requests.rivers.UpdateRiverReqDTO;
+import ctu.cit.se.dam_service.dtos.responses.commands.CommandResDTO;
 import ctu.cit.se.dam_service.dtos.responses.damtypes.RetrieveDamTypeResDTO;
 import ctu.cit.se.dam_service.dtos.responses.rivers.RetrieveRiverResDTO;
 import ctu.cit.se.dam_service.entites.DamType;
@@ -33,13 +34,13 @@ public class RiverDAO implements IRiverDAO {
     private IMapper<River, RetrieveRiverResDTO> retrieveMapper;
 
     @Override
-    public void create(CreateRiverReqDTO createRiverReqDTO) {
-        riverRepository.save(createMapper.convert(createRiverReqDTO));
+    public CommandResDTO create(CreateRiverReqDTO createRiverReqDTO) {
+        return CommandResDTO.builder().id(riverRepository.save(createMapper.convert(createRiverReqDTO)).getId().toString()).build();
     }
 
     @Override
-    public void update(UpdateRiverReqDTO updateRiverReqDTO) {
-        riverRepository.save(updateMapper.convert(updateRiverReqDTO));
+    public CommandResDTO update(UpdateRiverReqDTO updateRiverReqDTO) {
+        return CommandResDTO.builder().id(riverRepository.save(updateMapper.convert(updateRiverReqDTO)).getId().toString()).build();
     }
 
     @Override

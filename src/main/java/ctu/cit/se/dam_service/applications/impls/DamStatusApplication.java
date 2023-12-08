@@ -4,6 +4,7 @@ import ctu.cit.se.dam_service.applications.specs.IDamStatusApplication;
 import ctu.cit.se.dam_service.daos.specs.IDamStatusDAO;
 import ctu.cit.se.dam_service.dtos.requests.damstatuses.CreateDamStatusReqDTO;
 import ctu.cit.se.dam_service.dtos.requests.damstatuses.UpdateDamStatusReqDTO;
+import ctu.cit.se.dam_service.dtos.responses.commands.CommandResDTO;
 import ctu.cit.se.dam_service.dtos.responses.damstatuses.RetrieveDamStatusResDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,13 +18,13 @@ public class DamStatusApplication implements IDamStatusApplication {
     private IDamStatusDAO damStatusDAO;
 
     @Override
-    public void create(CreateDamStatusReqDTO createDamStatusReqDTO) {
-        damStatusDAO.create(createDamStatusReqDTO);
+    public CommandResDTO create(CreateDamStatusReqDTO createDamStatusReqDTO) {
+        return damStatusDAO.create(createDamStatusReqDTO);
     }
 
     @Override
-    public void update(UpdateDamStatusReqDTO updateDamStatusReqDTO) {
-        damStatusDAO.update(updateDamStatusReqDTO);
+    public CommandResDTO update(UpdateDamStatusReqDTO updateDamStatusReqDTO) {
+        return damStatusDAO.update(updateDamStatusReqDTO);
     }
 
     @Override
