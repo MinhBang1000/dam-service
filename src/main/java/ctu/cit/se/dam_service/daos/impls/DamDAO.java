@@ -4,6 +4,7 @@ import ctu.cit.se.dam_service.daos.mappers.IMapper;
 import ctu.cit.se.dam_service.daos.specs.IDamDAO;
 import ctu.cit.se.dam_service.dtos.requests.dams.CreateDamReqDTO;
 import ctu.cit.se.dam_service.dtos.requests.dams.UpdateDamReqDTO;
+import ctu.cit.se.dam_service.dtos.responses.commands.CommandResDTO;
 import ctu.cit.se.dam_service.dtos.responses.dams.RetrieveDamResDTO;
 import ctu.cit.se.dam_service.entites.Dam;
 import ctu.cit.se.dam_service.exceptions.messages.CustomExceptionMessage;
@@ -26,13 +27,13 @@ public class DamDAO implements IDamDAO {
     private IMapper<Dam, RetrieveDamResDTO> retrieveMapper;
 
     @Override
-    public void create(CreateDamReqDTO createDamReqDTO) {
-        damRepository.save(createMapper.convert(createDamReqDTO));
+    public CommandResDTO create(CreateDamReqDTO createDamReqDTO) {
+        return CommandResDTO.builder().id(damRepository.save(createMapper.convert(createDamReqDTO)).getId().toString()).build();
     }
 
     @Override
-    public void update(UpdateDamReqDTO updateDamReqDTO) {
-        damRepository.save(updateMapper.convert(updateDamReqDTO));
+    public CommandResDTO update(UpdateDamReqDTO updateDamReqDTO) {
+        return CommandResDTO.builder().id(damRepository.save(updateMapper.convert(updateDamReqDTO)).getId().toString()).build();
     }
 
     @Override
