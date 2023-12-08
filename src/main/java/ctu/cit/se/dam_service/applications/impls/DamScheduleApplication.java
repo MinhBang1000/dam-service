@@ -4,6 +4,7 @@ import ctu.cit.se.dam_service.applications.specs.IDamScheduleApplication;
 import ctu.cit.se.dam_service.daos.specs.IDamScheduleDAO;
 import ctu.cit.se.dam_service.dtos.requests.damschedules.CreateDamScheduleReqDTO;
 import ctu.cit.se.dam_service.dtos.requests.damschedules.UpdateDamScheduleReqDTO;
+import ctu.cit.se.dam_service.dtos.responses.commands.CommandResDTO;
 import ctu.cit.se.dam_service.dtos.responses.damschedules.RetrieveDamScheduleResDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,13 +18,13 @@ public class DamScheduleApplication implements IDamScheduleApplication {
     private IDamScheduleDAO damScheduleDAO;
 
     @Override
-    public void create(CreateDamScheduleReqDTO createDamScheduleReqDTO) {
-        damScheduleDAO.create(createDamScheduleReqDTO);
+    public CommandResDTO create(CreateDamScheduleReqDTO createDamScheduleReqDTO) {
+        return damScheduleDAO.create(createDamScheduleReqDTO);
     }
 
     @Override
-    public void update(UpdateDamScheduleReqDTO updateDamScheduleReqDTO) {
-        damScheduleDAO.update(updateDamScheduleReqDTO);
+    public CommandResDTO update(UpdateDamScheduleReqDTO updateDamScheduleReqDTO) {
+        return damScheduleDAO.update(updateDamScheduleReqDTO);
     }
 
     @Override

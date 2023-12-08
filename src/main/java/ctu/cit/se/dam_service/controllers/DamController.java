@@ -3,6 +3,7 @@ package ctu.cit.se.dam_service.controllers;
 import ctu.cit.se.dam_service.applications.specs.IDamApplication;
 import ctu.cit.se.dam_service.dtos.requests.dams.CreateDamReqDTO;
 import ctu.cit.se.dam_service.dtos.requests.dams.UpdateDamReqDTO;
+import ctu.cit.se.dam_service.dtos.responses.commands.CommandResDTO;
 import ctu.cit.se.dam_service.dtos.responses.dams.RetrieveDamResDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,15 +20,13 @@ public class DamController {
     private IDamApplication damApplication;
 
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody CreateDamReqDTO createDamReqDTO) {
-        damApplication.create(createDamReqDTO);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    public ResponseEntity<CommandResDTO> create(@RequestBody CreateDamReqDTO createDamReqDTO) {
+        return new ResponseEntity<>(damApplication.create(createDamReqDTO),HttpStatus.CREATED);
     }
 
     @PatchMapping
-    public ResponseEntity<Void> update(@RequestBody UpdateDamReqDTO updateDamReqDTO) {
-        damApplication.update(updateDamReqDTO);
-        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    public ResponseEntity<CommandResDTO> update(@RequestBody UpdateDamReqDTO updateDamReqDTO) {
+        return new ResponseEntity<>(damApplication.update(updateDamReqDTO), HttpStatus.ACCEPTED);
     }
 
     @GetMapping
