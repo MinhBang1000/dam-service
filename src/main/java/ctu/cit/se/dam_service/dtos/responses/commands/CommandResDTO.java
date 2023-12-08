@@ -13,6 +13,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CommandResDTO {
-    @JsonProperty("createdId")
+    @JsonProperty("commandedId")
     private String id;
 }
