@@ -27,6 +27,7 @@ public class CreateDamMapper implements IMapper<CreateDamReqDTO, Dam> {
                 .height(source.getHeight())
                 .damType(damType)
                 .river(river)
+                .description(source.getDescription())
                 .capacity(source.getCapacity())
                 .longtitude(source.getLongtitude())
                 .latitude(source.getLatitude())

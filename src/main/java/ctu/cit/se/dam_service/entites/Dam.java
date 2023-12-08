@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -23,6 +25,8 @@ public class Dam {
     private String name;
     @Column(name = "dam_construction_date")
     private LocalDate constructedAt;
+    @Column(name = "dam_description")
+    private String description;
     @Column(name = "dam_height")
     private Double height;
     @Column(name = "dam_capacity")
@@ -37,4 +41,6 @@ public class Dam {
     @ManyToOne
     @JoinColumn(name = "dam_river_id")
     private River river;
+    @OneToMany(mappedBy = "dam", cascade = CascadeType.ALL)
+    private List<DamSchedule> damSchedules = new ArrayList<>();
 }

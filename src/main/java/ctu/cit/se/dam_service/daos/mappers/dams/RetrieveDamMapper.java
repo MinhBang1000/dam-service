@@ -33,6 +33,7 @@ public class RetrieveDamMapper implements IMapper<Dam, RetrieveDamResDTO> {
                 .height(source.getHeight())
                 .longtitude(source.getLongtitude())
                 .latitude(source.getLatitude())
+                .description(source.getDescription())
                 .river(riverMapper.convert(source.getRiver()))
                 .damType(damTypeMapper.convert(source.getDamType()))
                 .build();
