@@ -1,6 +1,7 @@
 package ctu.cit.se.dam_service.dtos.requests.dams;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,6 +14,7 @@ import java.time.LocalDate;
 @Builder
 @Data
 public class UpdateDamReqDTO  {
+    @NotBlank(message = "The dam id should not be null")
     @JsonProperty("damId")
     private String id;
     @JsonProperty("damName")

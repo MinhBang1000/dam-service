@@ -30,7 +30,7 @@ public class DamStatusController {
     }
 
     @PatchMapping
-    public ResponseEntity<CommandResDTO> update(@RequestBody UpdateDamStatusReqDTO updateDamStatusReqDTO) {
+    public ResponseEntity<CommandResDTO> update(@Valid @RequestBody UpdateDamStatusReqDTO updateDamStatusReqDTO) {
         return new ResponseEntity<>(damStatusApplication.update(updateDamStatusReqDTO), HttpStatus.ACCEPTED);
     }
 

@@ -12,7 +12,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 public class CreateDamStatusReqDTO {
-    @NotBlank(message = "This field should not be blank")
+
+    @NotBlank(message = "The dam status name should not be blank")
     @JsonProperty("damStatusName")
     private String name;
 }

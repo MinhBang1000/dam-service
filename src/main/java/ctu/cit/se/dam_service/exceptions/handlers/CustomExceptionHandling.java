@@ -17,13 +17,18 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @ControllerAdvice
 public class CustomExceptionHandling{
     @ExceptionHandler(value = {Exception.class})
     protected ResponseEntity<ErrorDetails> handleAllException(Exception ex, WebRequest request) throws Exception {
-            ex.printStackTrace();
-            return new ResponseEntity<>(ErrorDetails.builder().detail(request.getDescription(false)).createAt(LocalDateTime.now()).message(ex.getMessage()).build(), HttpStatus.BAD_REQUEST);
+        if (ex instanceof MethodArgumentNotValidException subEx) {
+            var errors = subEx.getBindingResult().getFieldErrors().stream().map(error -> error.getField() + ": " + error.getDefaultMessage()).collect(Collectors.toList());
+            return new ResponseEntity<>(ErrorDetails.builder().detail(request.getDescription(false)).createAt(LocalDateTime.now()).message(errors.toString()).build(), HttpStatus.BAD_REQUEST);
+        }
+        ex.printStackTrace();
+        return new ResponseEntity<>(ErrorDetails.builder().detail(request.getDescription(false)).createAt(LocalDateTime.now()).message(ex.getMessage()).build(), HttpStatus.BAD_REQUEST);
     }
 }
