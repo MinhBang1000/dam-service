@@ -9,6 +9,7 @@ import ctu.cit.se.dam_service.dtos.requests.damstatuses.UpdateDamStatusReqDTO;
 import ctu.cit.se.dam_service.dtos.responses.commands.CommandResDTO;
 import ctu.cit.se.dam_service.dtos.responses.dams.RetrieveDamResDTO;
 import ctu.cit.se.dam_service.dtos.responses.damstatuses.RetrieveDamStatusResDTO;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +25,7 @@ public class DamStatusController {
     private IDamStatusApplication damStatusApplication;
 
     @PostMapping
-    public ResponseEntity<CommandResDTO> create(@RequestBody CreateDamStatusReqDTO createDamStatusReqDTO) {
+    public ResponseEntity<CommandResDTO> create(@Valid @RequestBody CreateDamStatusReqDTO createDamStatusReqDTO) {
         return new ResponseEntity<>(damStatusApplication.create(createDamStatusReqDTO), HttpStatus.CREATED);
     }
 
