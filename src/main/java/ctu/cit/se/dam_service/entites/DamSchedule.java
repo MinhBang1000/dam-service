@@ -14,7 +14,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "dam_schedules", uniqueConstraints = @UniqueConstraint(columnNames = {"dam_id", "dam_status_id"}))
+@Table(name = "dam_schedules")
 public class DamSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

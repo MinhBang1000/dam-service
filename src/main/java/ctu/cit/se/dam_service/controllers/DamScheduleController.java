@@ -9,6 +9,7 @@ import ctu.cit.se.dam_service.dtos.requests.damstatuses.UpdateDamStatusReqDTO;
 import ctu.cit.se.dam_service.dtos.responses.commands.CommandResDTO;
 import ctu.cit.se.dam_service.dtos.responses.damschedules.RetrieveDamScheduleResDTO;
 import ctu.cit.se.dam_service.dtos.responses.damstatuses.RetrieveDamStatusResDTO;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,12 +25,12 @@ public class DamScheduleController {
     private IDamScheduleApplication damScheduleApplication;
 
     @PostMapping
-    public ResponseEntity<CommandResDTO> create(@RequestBody CreateDamScheduleReqDTO createDamScheduleReqDTO) {
+    public ResponseEntity<CommandResDTO> create(@Valid @RequestBody CreateDamScheduleReqDTO createDamScheduleReqDTO) {
         return new ResponseEntity<>(damScheduleApplication.create(createDamScheduleReqDTO), HttpStatus.CREATED);
     }
 
     @PatchMapping
-    public ResponseEntity<CommandResDTO> update(@RequestBody UpdateDamScheduleReqDTO updateDamScheduleReqDTO) {
+    public ResponseEntity<CommandResDTO> update(@Valid @RequestBody UpdateDamScheduleReqDTO updateDamScheduleReqDTO) {
         return new ResponseEntity<>(damScheduleApplication.update(updateDamScheduleReqDTO), HttpStatus.ACCEPTED);
     }
 

@@ -24,10 +24,14 @@ import java.util.stream.Collectors;
 public class CustomExceptionHandling{
     @ExceptionHandler(value = {Exception.class})
     protected ResponseEntity<ErrorDetails> handleAllException(Exception ex, WebRequest request) throws Exception {
-        if (ex instanceof MethodArgumentNotValidException subEx) {
-            var errors = subEx.getBindingResult().getFieldErrors().stream().map(error -> error.getField() + ": " + error.getDefaultMessage()).collect(Collectors.toList());
-            return new ResponseEntity<>(ErrorDetails.builder().detail(request.getDescription(false)).createAt(LocalDateTime.now()).message(errors.toString()).build(), HttpStatus.BAD_REQUEST);
-        }
+        /**
+         *
+         *
+            if (ex instanceof MethodArgumentNotValidException subEx) {
+                var errors = subEx.getBindingResult().getFieldErrors().stream().map(error -> error.getField() + ": " + error.getDefaultMessage()).collect(Collectors.toList());
+                return new ResponseEntity<>(ErrorDetails.builder().detail(request.getDescription(false)).createAt(LocalDateTime.now()).message(errors.toString()).build(), HttpStatus.BAD_REQUEST);
+            }
+         */
         ex.printStackTrace();
         return new ResponseEntity<>(ErrorDetails.builder().detail(request.getDescription(false)).createAt(LocalDateTime.now()).message(ex.getMessage()).build(), HttpStatus.BAD_REQUEST);
     }
