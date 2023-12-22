@@ -9,6 +9,7 @@ import ctu.cit.se.dam_service.dtos.requests.rivers.UpdateRiverReqDTO;
 import ctu.cit.se.dam_service.dtos.responses.commands.CommandResDTO;
 import ctu.cit.se.dam_service.dtos.responses.dams.RetrieveDamResDTO;
 import ctu.cit.se.dam_service.dtos.responses.rivers.RetrieveRiverResDTO;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,12 +25,12 @@ public class RiverController {
     private IRiverApplication riverApplication;
 
     @PostMapping
-    public ResponseEntity<CommandResDTO> create(@RequestBody CreateRiverReqDTO createRiverReqDTO) {
+    public ResponseEntity<CommandResDTO> create(@Valid @RequestBody CreateRiverReqDTO createRiverReqDTO) {
         return new ResponseEntity<>(riverApplication.create(createRiverReqDTO), HttpStatus.CREATED);
     }
 
     @PatchMapping
-    public ResponseEntity<CommandResDTO> update(@RequestBody UpdateRiverReqDTO updateRiverReqDTO) {
+    public ResponseEntity<CommandResDTO> update(@Valid @RequestBody UpdateRiverReqDTO updateRiverReqDTO) {
         return new ResponseEntity<>(riverApplication.update(updateRiverReqDTO), HttpStatus.ACCEPTED);
     }
 

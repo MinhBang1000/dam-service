@@ -9,6 +9,7 @@ import ctu.cit.se.dam_service.dtos.requests.damtypes.UpdateDamTypeReqDTO;
 import ctu.cit.se.dam_service.dtos.responses.commands.CommandResDTO;
 import ctu.cit.se.dam_service.dtos.responses.dams.RetrieveDamResDTO;
 import ctu.cit.se.dam_service.dtos.responses.damtypes.RetrieveDamTypeResDTO;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,12 +25,12 @@ public class DamTypeController {
     private IDamTypeApplication damTypeApplication;
 
     @PostMapping
-    public ResponseEntity<CommandResDTO> create(@RequestBody CreateDamTypeReqDTO createDamTypeReqDTO) {
+    public ResponseEntity<CommandResDTO> create(@Valid @RequestBody CreateDamTypeReqDTO createDamTypeReqDTO) {
         return new ResponseEntity<>(damTypeApplication.create(createDamTypeReqDTO), HttpStatus.CREATED);
     }
 
     @PatchMapping
-    public ResponseEntity<CommandResDTO> update(@RequestBody UpdateDamTypeReqDTO updateDamTypeReqDTO) {
+    public ResponseEntity<CommandResDTO> update(@Valid @RequestBody UpdateDamTypeReqDTO updateDamTypeReqDTO) {
         return new ResponseEntity<>(damTypeApplication.update(updateDamTypeReqDTO), HttpStatus.ACCEPTED);
     }
 
