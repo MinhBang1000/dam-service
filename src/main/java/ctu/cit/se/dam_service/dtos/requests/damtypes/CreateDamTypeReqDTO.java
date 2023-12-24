@@ -17,7 +17,6 @@ public class CreateDamTypeReqDTO  {
     @JsonProperty("damTypeName")
     private String name;
 
-    @NotBlank(message = "The dam description should not be blank")
     @JsonProperty("damTypeDescription")
     private String description;
 }
