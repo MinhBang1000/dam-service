@@ -22,7 +22,7 @@ public class River {
     private UUID id;
     @Column(name = "river_name", nullable = false)
     private String name;
-    @Column(name = "river_location", nullable = false)
+    @Column(name = "river_location", columnDefinition = "TEXT", nullable = false)
     private String location;
     @OneToMany(mappedBy = "river", cascade = CascadeType.ALL)
     private List<Dam> dams = new ArrayList<>();
