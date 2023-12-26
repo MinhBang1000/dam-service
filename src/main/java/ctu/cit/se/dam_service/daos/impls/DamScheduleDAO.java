@@ -2,6 +2,7 @@ package ctu.cit.se.dam_service.daos.impls;
 
 import ctu.cit.se.dam_service.daos.mappers.IMapper;
 import ctu.cit.se.dam_service.daos.specs.IDamScheduleDAO;
+import ctu.cit.se.dam_service.daos.validations.IValidation;
 import ctu.cit.se.dam_service.dtos.requests.damschedules.CreateDamScheduleReqDTO;
 import ctu.cit.se.dam_service.dtos.requests.damschedules.UpdateDamScheduleReqDTO;
 import ctu.cit.se.dam_service.dtos.responses.commands.CommandResDTO;
@@ -26,10 +27,16 @@ public class DamScheduleDAO implements IDamScheduleDAO {
     private IMapper<UpdateDamScheduleReqDTO, DamSchedule> updateMapper;
     @Autowired
     private IMapper<DamSchedule, RetrieveDamScheduleResDTO> retrieveMapper;
+    @Autowired
+    private IValidation<DamSchedule> damScheduleValidation;
 
     @Override
     public CommandResDTO create(CreateDamScheduleReqDTO createDamScheduleReqDTO) {
-        return CommandResDTO.builder().id(damScheduleRepository.save(createMapper.convert(createDamScheduleReqDTO)).getId().toString()).build();
+        var creatingDamSchedule = createMapper.convert(createDamScheduleReqDTO);
+        if (!damScheduleValidation.isValid(creatingDamSchedule)) {
+            throw new IllegalArgumentException(CustomExceptionMessage.DAM_SCHEDULE_BEGIN_END_INVALID_RANGE);
+        }
+        return CommandResDTO.builder().id(damScheduleRepository.save(creatingDamSchedule).getId().toString()).build();
     }
 
     @Override
