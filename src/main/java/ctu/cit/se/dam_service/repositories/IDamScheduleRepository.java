@@ -10,4 +10,6 @@ import java.util.UUID;
 @Repository
 public interface IDamScheduleRepository extends JpaRepository<DamSchedule, UUID> {
     List<DamSchedule> findAllByDamIdAndDamStatusId(UUID damId, UUID damStatusId);
+    List<DamSchedule> findAllByDamId(UUID damId);
+    List<DamSchedule> findAllByOrderByBeginAtAsc();
 }

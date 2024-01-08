@@ -34,4 +34,13 @@ public class DamSchedule {
     @ManyToOne
     @JoinColumn(name = "dam_status_id")
     private DamStatus damStatus;
+
+    @Override
+    public String toString() {
+        return "DamSchedule{" +
+                "id=" + id +
+                ", beginAt=" + beginAt +
+                ", endAt=" + endAt +
+                '}';
+    }
 }

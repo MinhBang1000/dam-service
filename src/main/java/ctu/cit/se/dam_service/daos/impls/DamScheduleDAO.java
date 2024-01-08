@@ -33,20 +33,26 @@ public class DamScheduleDAO implements IDamScheduleDAO {
     @Override
     public CommandResDTO create(CreateDamScheduleReqDTO createDamScheduleReqDTO) {
         var creatingDamSchedule = createMapper.convert(createDamScheduleReqDTO);
-        if (!damScheduleValidation.isValid(creatingDamSchedule)) {
-            throw new IllegalArgumentException(CustomExceptionMessage.DAM_SCHEDULE_BEGIN_END_INVALID_RANGE);
+        var checker = damScheduleValidation.isValid(creatingDamSchedule);
+        if (!checker.getStatus()) {
+            throw new IllegalArgumentException(checker.getMessage());
         }
         return CommandResDTO.builder().id(damScheduleRepository.save(creatingDamSchedule).getId().toString()).build();
     }
 
     @Override
     public CommandResDTO update(UpdateDamScheduleReqDTO updateDamScheduleReqDTO) {
-        return CommandResDTO.builder().id(damScheduleRepository.save(updateMapper.convert(updateDamScheduleReqDTO)).getId().toString()).build();
+        var updatingDamSchedule = updateMapper.convert(updateDamScheduleReqDTO);
+        var checker = damScheduleValidation.isValid(updatingDamSchedule);
+        if (!checker.getStatus()) {
+            throw new IllegalArgumentException(checker.getMessage());
+        }
+        return CommandResDTO.builder().id(damScheduleRepository.save(updatingDamSchedule).getId().toString()).build();
     }
 
     @Override
     public List<RetrieveDamScheduleResDTO> list() {
-        return damScheduleRepository.findAll().stream().map(damSchedule -> retrieveMapper.convert(damSchedule)).collect(Collectors.toList());
+        return damScheduleRepository.findAllByOrderByBeginAtAsc().stream().map(damSchedule -> retrieveMapper.convert(damSchedule)).collect(Collectors.toList());
     }
 
     @Override

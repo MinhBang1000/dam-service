@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @Data
-@ValidDateRange(beginDateName = "beginAt", endDateName = "endAt", message = "The end date must be after begin date")
+//@ValidDateRange(beginDateName = "beginAt", endDateName = "endAt", message = "The end date must be after begin date")
 public class CreateDamScheduleReqDTO {
 
     @NotNull(message = "The begin date should not be null")
