@@ -26,4 +26,6 @@ public class River {
     private String location;
     @OneToMany(mappedBy = "river", cascade = CascadeType.ALL)
     private List<Dam> dams = new ArrayList<>();
+    @OneToMany(mappedBy = "river", cascade = CascadeType.ALL)
+    private List<RiverLocation> riverLocations = new ArrayList<>();
 }

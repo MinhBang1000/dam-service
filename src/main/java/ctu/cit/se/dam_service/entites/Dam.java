@@ -43,4 +43,6 @@ public class Dam {
     private River river;
     @OneToMany(mappedBy = "dam", cascade = CascadeType.ALL)
     private List<DamSchedule> damSchedules = new ArrayList<>();
+    @OneToMany(mappedBy = "dam", cascade = CascadeType.ALL)
+    private List<DamLocation> damLocations = new ArrayList<>();
 }
