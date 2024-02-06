@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @Data
 public class CreateDamLocationReqDTO {
 
-    @NotNull(message = "The longtitude of dam should not be null")
+    @NotNull(message = "The longitude of dam should not be null")
     @JsonProperty("damLocationLongitude")
     private String longitude;
 

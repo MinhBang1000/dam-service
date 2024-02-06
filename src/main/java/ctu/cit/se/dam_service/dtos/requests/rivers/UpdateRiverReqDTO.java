@@ -22,4 +22,10 @@ public class UpdateRiverReqDTO {
 
     @JsonProperty("riverLocation")
     private String location;
+
+    @JsonProperty("riverLatitude")
+    private String latitude;
+
+    @JsonProperty("riverLongitude")
+    private String longitude;
 }

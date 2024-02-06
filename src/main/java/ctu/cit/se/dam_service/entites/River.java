@@ -24,6 +24,10 @@ public class River {
     private String name;
     @Column(name = "river_location", nullable = false)
     private String location;
+    @Column(name = "river_latitude", nullable = false)
+    private String latitude;
+    @Column(name = "river_longitude", nullable = false)
+    private String longitude;
     @OneToMany(mappedBy = "river", cascade = CascadeType.ALL)
     private List<Dam> dams = new ArrayList<>();
     @OneToMany(mappedBy = "river", cascade = CascadeType.ALL)

@@ -20,7 +20,7 @@ public class RetrieveRiverLocationMapper implements IMapper<RiverLocation, Retri
     public RetrieveRiverLocationResDTO convert(RiverLocation source) {
         return RetrieveRiverLocationResDTO.builder()
                 .id(source.getId().toString())
-                .longtitude(source.getLongitude())
+                .longitude(source.getLongitude())
                 .latitude(source.getLatitude())
                 .river(riverMapper.convert(source.getRiver()))
                 .build();

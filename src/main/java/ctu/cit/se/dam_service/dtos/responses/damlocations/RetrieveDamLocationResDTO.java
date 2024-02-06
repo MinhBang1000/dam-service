@@ -18,8 +18,8 @@ import java.time.LocalDate;
 public class RetrieveDamLocationResDTO {
     @JsonProperty("damLocationId")
     private String id;
-    @JsonProperty("damLocationLongtitude")
-    private String longtitude;
+    @JsonProperty("damLocationLongitude")
+    private String longitude;
     @JsonProperty("damLocationLatitude")
     private String latitude;
     @JsonProperty("damLocationDam")
