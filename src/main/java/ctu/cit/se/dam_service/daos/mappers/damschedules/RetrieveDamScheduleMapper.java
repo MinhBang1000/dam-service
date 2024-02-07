@@ -27,6 +27,7 @@ public class RetrieveDamScheduleMapper implements IMapper<DamSchedule, RetrieveD
                 .damStatus(damStatusMapper.convert(source.getDamStatus()))
                 .beginAt(source.getBeginAt())
                 .description(source.getDescription())
+                .isLock(source.getIsLock())
                 .endAt(source.getEndAt())
                 .build();
     }

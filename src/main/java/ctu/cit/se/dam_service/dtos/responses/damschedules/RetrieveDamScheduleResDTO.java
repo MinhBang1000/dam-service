@@ -26,6 +26,8 @@ public class RetrieveDamScheduleResDTO {
     private LocalDateTime endAt;
     @JsonProperty("damScheduleDescription")
     private String description;
+    @JsonProperty("damScheduleIsLock")
+    private Boolean isLock;
     @JsonProperty("damScheduleDam")
     private RetrieveDamResDTO dam;
     @JsonProperty("damScheduleDamStatus")
