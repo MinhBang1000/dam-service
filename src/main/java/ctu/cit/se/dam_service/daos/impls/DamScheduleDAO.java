@@ -2,6 +2,7 @@ package ctu.cit.se.dam_service.daos.impls;
 
 import ctu.cit.se.dam_service.daos.mappers.IMapper;
 import ctu.cit.se.dam_service.daos.specs.IDamScheduleDAO;
+import ctu.cit.se.dam_service.daos.validations.IValidation;
 import ctu.cit.se.dam_service.dtos.requests.damschedules.CreateDamScheduleReqDTO;
 import ctu.cit.se.dam_service.dtos.requests.damschedules.UpdateDamScheduleReqDTO;
 import ctu.cit.se.dam_service.dtos.responses.commands.CommandResDTO;
@@ -26,20 +27,32 @@ public class DamScheduleDAO implements IDamScheduleDAO {
     private IMapper<UpdateDamScheduleReqDTO, DamSchedule> updateMapper;
     @Autowired
     private IMapper<DamSchedule, RetrieveDamScheduleResDTO> retrieveMapper;
+    @Autowired
+    private IValidation<DamSchedule> damScheduleValidation;
 
     @Override
     public CommandResDTO create(CreateDamScheduleReqDTO createDamScheduleReqDTO) {
-        return CommandResDTO.builder().id(damScheduleRepository.save(createMapper.convert(createDamScheduleReqDTO)).getId().toString()).build();
+        var creatingDamSchedule = createMapper.convert(createDamScheduleReqDTO);
+        var checker = damScheduleValidation.isValid(creatingDamSchedule);
+        if (!checker.getStatus()) {
+            throw new IllegalArgumentException(checker.getMessage());
+        }
+        return CommandResDTO.builder().id(damScheduleRepository.save(creatingDamSchedule).getId().toString()).build();
     }
 
     @Override
     public CommandResDTO update(UpdateDamScheduleReqDTO updateDamScheduleReqDTO) {
-        return CommandResDTO.builder().id(damScheduleRepository.save(updateMapper.convert(updateDamScheduleReqDTO)).getId().toString()).build();
+        var updatingDamSchedule = updateMapper.convert(updateDamScheduleReqDTO);
+        var checker = damScheduleValidation.isValid(updatingDamSchedule);
+        if (!checker.getStatus()) {
+            throw new IllegalArgumentException(checker.getMessage());
+        }
+        return CommandResDTO.builder().id(damScheduleRepository.save(updatingDamSchedule).getId().toString()).build();
     }
 
     @Override
     public List<RetrieveDamScheduleResDTO> list() {
-        return damScheduleRepository.findAll().stream().map(damSchedule -> retrieveMapper.convert(damSchedule)).collect(Collectors.toList());
+        return damScheduleRepository.findAllByOrderByBeginAtAsc().stream().map(damSchedule -> retrieveMapper.convert(damSchedule)).collect(Collectors.toList());
     }
 
     @Override

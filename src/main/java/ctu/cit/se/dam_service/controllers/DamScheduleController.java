@@ -16,7 +16,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/dam-schedules")
@@ -35,8 +37,15 @@ public class DamScheduleController {
     }
 
     @GetMapping
-    public ResponseEntity<List<RetrieveDamScheduleResDTO>> list() {
-        return new ResponseEntity<>(damScheduleApplication.list(), HttpStatus.OK);
+    public ResponseEntity<List<RetrieveDamScheduleResDTO>> list(@RequestParam(name = "damId", required = false) String damId, @RequestParam(name = "damStatusId", required = false) String damStatusId) {
+        var damSchedules = damScheduleApplication.list();
+        if (Objects.nonNull(damId)) {
+            damSchedules = damSchedules.stream().filter(damSchedule -> damSchedule.getDam().getId().equals(damId)).collect(Collectors.toList());
+        }
+        if (Objects.nonNull(damStatusId)) {
+            damSchedules = damSchedules.stream().filter(damSchedule -> damSchedule.getDamStatus().getId().equals(damStatusId)).collect(Collectors.toList());
+        }
+        return new ResponseEntity<>(damSchedules, HttpStatus.OK);
     }
 
     @GetMapping("/{damScheduleId}")

@@ -14,7 +14,10 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "dam_schedules")
+@Table(
+        name = "dam_schedules",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"dam_id", "dam_schedule_begin_at", "dam_schedule_end_at", "dam_status_id"})
+)
 public class DamSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -33,4 +36,13 @@ public class DamSchedule {
     @ManyToOne
     @JoinColumn(name = "dam_status_id")
     private DamStatus damStatus;
+
+    @Override
+    public String toString() {
+        return "DamSchedule{" +
+                "id=" + id +
+                ", beginAt=" + beginAt +
+                ", endAt=" + endAt +
+                '}';
+    }
 }
