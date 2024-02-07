@@ -20,4 +20,10 @@ public class CreateRiverReqDTO  {
     @NotBlank(message = "The river location should not be blank")
     @JsonProperty("riverLocation")
     private String location;
+    @NotBlank(message = "The river latitude should not be blank")
+    @JsonProperty("riverLatitude")
+    private String latitude;
+    @NotBlank(message = "The river longitude should not be blank")
+    @JsonProperty("riverLongitude")
+    private String longitude;
 }

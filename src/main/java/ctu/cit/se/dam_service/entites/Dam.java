@@ -31,8 +31,8 @@ public class Dam {
     private Double height;
     @Column(name = "dam_capacity")
     private Integer capacity;
-    @Column(name = "dam_longtitude")
-    private Double longtitude;
+    @Column(name = "dam_longitude")
+    private Double longitude;
     @Column(name = "dam_latitude")
     private Double latitude;
     @ManyToOne

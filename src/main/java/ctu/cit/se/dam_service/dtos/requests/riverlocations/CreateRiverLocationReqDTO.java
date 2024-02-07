@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class CreateRiverLocationReqDTO {
 
-    @NotNull(message = "The longtitude of river should not be null")
+    @NotNull(message = "The longitude of river should not be null")
     @JsonProperty("riverLocationLongitude")
     private String longitude;
 

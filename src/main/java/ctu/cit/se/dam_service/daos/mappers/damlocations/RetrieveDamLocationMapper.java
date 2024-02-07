@@ -22,7 +22,7 @@ public class RetrieveDamLocationMapper implements IMapper<DamLocation, RetrieveD
     public RetrieveDamLocationResDTO convert(DamLocation source) {
         return RetrieveDamLocationResDTO.builder()
                 .id(source.getId().toString())
-                .longtitude(source.getLongitude())
+                .longitude(source.getLongitude())
                 .latitude(source.getLatitude())
                 .dam(damMapper.convert(source.getDam()))
                 .build();

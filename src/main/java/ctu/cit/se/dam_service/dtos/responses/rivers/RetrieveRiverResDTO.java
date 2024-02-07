@@ -1,6 +1,7 @@
 package ctu.cit.se.dam_service.dtos.responses.rivers;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,4 +18,8 @@ public class RetrieveRiverResDTO {
     private String name;
     @JsonProperty("riverLocation")
     private String location;
+    @JsonProperty("riverLatitude")
+    private String latitude;
+    @JsonProperty("riverLongitude")
+    private String longitude;
 }
