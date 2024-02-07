@@ -18,23 +18,19 @@ import java.time.LocalDateTime;
 @Data
 //@ValidDateRange(beginDateName = "beginAt", endDateName = "endAt", message = "The end date must be after begin date")
 public class CreateDamScheduleReqDTO {
-
     @NotNull(message = "The begin date should not be null")
     @JsonProperty("damScheduleBeginAt")
     private LocalDateTime beginAt;
-
     @NotNull(message = "The end date should not be null")
     @JsonProperty("damScheduleEndAt")
     private LocalDateTime endAt;
-
     @JsonProperty("damScheduleDescription")
     private String description;
-
+    @JsonProperty("damScheduleIsLock")
+    private Boolean isLock;
     @NotBlank(message = "The dam id should not be null")
     @JsonProperty("damScheduleDamId")
     private String damId;
-
-    @NotBlank(message = "The dam status id should not be null")
     @JsonProperty("damScheduleDamStatusId")
     private String damStatusId;
 }

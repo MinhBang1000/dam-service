@@ -29,7 +29,7 @@ public class CreateDamMapper implements IMapper<CreateDamReqDTO, Dam> {
                 .river(river)
                 .description(source.getDescription())
                 .capacity(source.getCapacity())
-                .longtitude(source.getLongtitude())
+                .longitude(source.getLongitude())
                 .latitude(source.getLatitude())
                 .build();
     }

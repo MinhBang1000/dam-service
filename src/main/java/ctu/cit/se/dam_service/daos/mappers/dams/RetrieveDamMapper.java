@@ -53,7 +53,7 @@ public class RetrieveDamMapper implements IMapper<Dam, RetrieveDamResDTO> {
                 .capacity(source.getCapacity())
                 .constructedAt(source.getConstructedAt())
                 .height(source.getHeight())
-                .longtitude(source.getLongtitude())
+                .longitude(source.getLongitude())
                 .latitude(source.getLatitude())
                 .description(source.getDescription())
                 .river(riverMapper.convert(source.getRiver()))

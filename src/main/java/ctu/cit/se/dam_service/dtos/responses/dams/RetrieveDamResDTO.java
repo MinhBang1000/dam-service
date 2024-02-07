@@ -28,8 +28,8 @@ public class RetrieveDamResDTO {
     private Double height;
     @JsonProperty("damCapacity")
     private Integer capacity;
-    @JsonProperty("damLongtitude")
-    private Double longtitude;
+    @JsonProperty("damLongitude")
+    private Double longitude;
     @JsonProperty("damLatitude")
     private Double latitude;
     @JsonProperty("damType")

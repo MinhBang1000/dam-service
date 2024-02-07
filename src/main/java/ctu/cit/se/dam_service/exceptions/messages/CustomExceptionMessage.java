@@ -11,4 +11,6 @@ public class CustomExceptionMessage {
     public final static String DAM_SCHEDULE_BEGIN_END = "CAN NOT CREATE A DAM SCHEDULE WITH BEGIN AT OR END AT IN THE SAME TIME WITH THE EXISTED";
     public final static String DAM_SCHEDULE_BEGIN_END_INVALID = "Ngày bắt đầu phải trước ngày kết thúc";
     public final static String DAM_SCHEDULE_BEGIN_END_INVALID_RANGE = "Đã tồn tại hoạt động trong thời điểm này";
+    public final static String DAM_LOCATION_NOT_FOUND_BY_ID = "CAN NOT FIND ANY DAM LOCATION WITH THIS ID";
+    public final static String RIVER_LOCATION_NOT_FOUND_BY_ID = "CAN NOT FIND ANY RIVER LOCATION WITH THIS ID";
 }

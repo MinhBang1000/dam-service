@@ -28,6 +28,8 @@ public class DamSchedule {
     private LocalDateTime endAt;
     @Column(name = "dam_schedule_description")
     private String description;
+    @Column(name = "dam_schedule_is_lock")
+    private Boolean isLock;
     @ManyToOne
     @JoinColumn(name = "dam_id")
     private Dam dam;
