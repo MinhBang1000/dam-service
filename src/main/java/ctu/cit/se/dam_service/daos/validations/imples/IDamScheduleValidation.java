@@ -20,7 +20,7 @@ public class IDamScheduleValidation implements IValidation<DamSchedule> {
     @Override
     public ValidationErrors isValid(DamSchedule source) {
         if (Objects.nonNull(source)){
-            var damSchedules = damScheduleRepository.findAllByDamIdAndDamStatusId(source.getDam().getId(), source.getDamStatus().getId());
+            var damSchedules = damScheduleRepository.findAllByDamIdAndIsLock(source.getDam().getId(), false);
             if (Objects.nonNull(source.getId())) {
                 // This is updating operation
                 damSchedules = damSchedules.stream().filter(damSchedule -> {

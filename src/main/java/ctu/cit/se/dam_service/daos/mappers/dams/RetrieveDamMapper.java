@@ -39,13 +39,30 @@ public class RetrieveDamMapper implements IMapper<Dam, RetrieveDamResDTO> {
 
     @Override
     public RetrieveDamResDTO convert(Dam source) {
-        var damOpenStatus = damStatusRepository.findByName("OPEN").orElseThrow(() -> new IllegalArgumentException(CustomExceptionMessage.DAM_STATUS_NOT_FOUND_BY_NAME));
-        var damCloseStatus = damStatusRepository.findByName("CLOSE").orElseThrow(() -> new IllegalArgumentException(CustomExceptionMessage.DAM_STATUS_NOT_FOUND_BY_NAME));
         var now = LocalDateTime.now();
-        var damSchedules = damScheduleRepository.findAllByDamId(source.getId());
-        var damStatus = damCloseStatus;
+        Boolean openStatus = false;
+        DamStatus damStatus = DamStatus.builder().name("CLOSE").build();
+        var damSchedules = damScheduleRepository.findAllByDamIdAndIsLock(source.getId(),false);
         if (!damSchedules.stream().filter(damSchedule -> damSchedule.getBeginAt().isBefore(now) && damSchedule.getEndAt().isAfter(now)).collect(Collectors.toList()).isEmpty()) {
-            damStatus = damOpenStatus;
+            openStatus = true;
+        }
+        if (openStatus) {
+            try {
+                var damOpenStatus = damStatusRepository.findByName("OPEN").get();
+                damStatus = damOpenStatus;
+            }catch (Exception ex) {
+                damStatus.setName("OPEN");
+                var damOpenStatus = damStatusRepository.save(damStatus);
+                damStatus = damOpenStatus;
+            }
+        }else {
+            try {
+                var damCloseStatus = damStatusRepository.findByName("CLOSE").get();
+                damStatus = damCloseStatus;
+            }catch (Exception ex) {
+                var damCloseStatus = damStatusRepository.save(damStatus);
+                damStatus = damCloseStatus;
+            }
         }
         return RetrieveDamResDTO.builder()
                 .id(source.getId().toString())
