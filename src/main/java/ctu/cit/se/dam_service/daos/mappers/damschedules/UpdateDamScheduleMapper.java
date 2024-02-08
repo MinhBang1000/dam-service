@@ -25,13 +25,17 @@ public class UpdateDamScheduleMapper implements IMapper<UpdateDamScheduleReqDTO,
     @Override
     public DamSchedule convert(UpdateDamScheduleReqDTO source) {
         var damSchedule = damScheduleRepository.findById(UUID.fromString(source.getId())).orElseThrow(() -> new IllegalArgumentException(CustomExceptionMessage.DAM_SCHEDULE_NOT_FOUND_BY_ID));
-        var damStatus = damStatusRepository.findById(UUID.fromString(source.getDamStatusId())).orElseThrow(() -> new IllegalArgumentException(CustomExceptionMessage.DAM_STATUS_NOT_FOUND_BY_ID));
+        DamStatus damStatus = damSchedule.getDamStatus();
+        if (Objects.nonNull(source.getDamStatusId())) {
+            damStatus = damStatusRepository.findById(UUID.fromString(source.getDamStatusId())).orElseThrow(() -> new IllegalArgumentException(CustomExceptionMessage.DAM_STATUS_NOT_FOUND_BY_ID));
+        }
         return DamSchedule.builder()
-                .damStatus(Objects.isNull(source.getDamStatusId()) ? damSchedule.getDamStatus() : damStatus)
+                .damStatus(damStatus)
                 .id(damSchedule.getId())
                 .beginAt(Objects.isNull(source.getBeginAt()) ? damSchedule.getBeginAt() : source.getBeginAt())
                 .endAt(Objects.isNull(source.getEndAt()) ? damSchedule.getEndAt() : source.getEndAt())
                 .description(Objects.isNull(source.getDescription()) ? damSchedule.getDescription() : source.getDescription())
+                .isLock(Objects.isNull(source.getIsLock()) ? damSchedule.getIsLock() : source.getIsLock())
                 .dam(damSchedule.getDam())
                 .build();
     }

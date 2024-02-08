@@ -1,6 +1,7 @@
 package ctu.cit.se.dam_service.dtos.responses.dams;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import ctu.cit.se.dam_service.dtos.responses.damstatuses.RetrieveDamStatusResDTO;
 import ctu.cit.se.dam_service.dtos.responses.damtypes.RetrieveDamTypeResDTO;
 import ctu.cit.se.dam_service.dtos.responses.rivers.RetrieveRiverResDTO;
 import lombok.AllArgsConstructor;
@@ -35,4 +36,6 @@ public class RetrieveDamResDTO {
     private RetrieveDamTypeResDTO damType;
     @JsonProperty("damRiver")
     private RetrieveRiverResDTO river;
+    @JsonProperty("damCurrentStatus")
+    private RetrieveDamStatusResDTO damStatus;
 }

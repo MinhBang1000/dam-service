@@ -29,6 +29,8 @@ public class UpdateDamScheduleReqDTO  {
 
     @JsonProperty("damScheduleDescription")
     private String description;
+    @JsonProperty("damScheduleIsLock")
+    private Boolean isLock;
 
     @JsonProperty("damScheduleDamStatusId")
     private String damStatusId;
