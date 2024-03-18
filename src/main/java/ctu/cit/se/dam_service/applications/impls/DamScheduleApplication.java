@@ -5,10 +5,13 @@ import ctu.cit.se.dam_service.daos.specs.IDamScheduleDAO;
 import ctu.cit.se.dam_service.dtos.requests.damschedules.CreateDamScheduleReqDTO;
 import ctu.cit.se.dam_service.dtos.requests.damschedules.UpdateDamScheduleReqDTO;
 import ctu.cit.se.dam_service.dtos.responses.commands.CommandResDTO;
+import ctu.cit.se.dam_service.dtos.responses.damschedules.RetrieveDamScheduleBySelectedDateResDTO;
 import ctu.cit.se.dam_service.dtos.responses.damschedules.RetrieveDamScheduleResDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,6 +33,11 @@ public class DamScheduleApplication implements IDamScheduleApplication {
     @Override
     public List<RetrieveDamScheduleResDTO> list() {
         return damScheduleDAO.list();
+    }
+
+    @Override
+    public List<RetrieveDamScheduleBySelectedDateResDTO> listBySelectedDate(LocalDate selectedDate) {
+        return damScheduleDAO.listBySelectedDate(selectedDate);
     }
 
     @Override

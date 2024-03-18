@@ -13,4 +13,6 @@ public class CustomExceptionMessage {
     public final static String DAM_SCHEDULE_BEGIN_END_INVALID_RANGE = "Đã tồn tại hoạt động trong thời điểm này";
     public final static String DAM_LOCATION_NOT_FOUND_BY_ID = "CAN NOT FIND ANY DAM LOCATION WITH THIS ID";
     public final static String RIVER_LOCATION_NOT_FOUND_BY_ID = "CAN NOT FIND ANY RIVER LOCATION WITH THIS ID";
+    public final static String DAM_SCHEDULE_SELECTED_DATE_INVALID = "Ngày được chọn không phù hợp";
+
 }

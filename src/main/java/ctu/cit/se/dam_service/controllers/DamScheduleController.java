@@ -1,20 +1,19 @@
 package ctu.cit.se.dam_service.controllers;
 
 import ctu.cit.se.dam_service.applications.specs.IDamScheduleApplication;
-import ctu.cit.se.dam_service.applications.specs.IDamStatusApplication;
 import ctu.cit.se.dam_service.dtos.requests.damschedules.CreateDamScheduleReqDTO;
 import ctu.cit.se.dam_service.dtos.requests.damschedules.UpdateDamScheduleReqDTO;
-import ctu.cit.se.dam_service.dtos.requests.damstatuses.CreateDamStatusReqDTO;
-import ctu.cit.se.dam_service.dtos.requests.damstatuses.UpdateDamStatusReqDTO;
 import ctu.cit.se.dam_service.dtos.responses.commands.CommandResDTO;
+import ctu.cit.se.dam_service.dtos.responses.damschedules.RetrieveDamScheduleBySelectedDateResDTO;
 import ctu.cit.se.dam_service.dtos.responses.damschedules.RetrieveDamScheduleResDTO;
-import ctu.cit.se.dam_service.dtos.responses.damstatuses.RetrieveDamStatusResDTO;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -46,6 +45,10 @@ public class DamScheduleController {
             damSchedules = damSchedules.stream().filter(damSchedule -> damSchedule.getDamStatus().getId().equals(damStatusId)).collect(Collectors.toList());
         }
         return new ResponseEntity<>(damSchedules, HttpStatus.OK);
+    }
+    @GetMapping("/selected-date/{selectedDate}")
+    public ResponseEntity<List<RetrieveDamScheduleBySelectedDateResDTO>> listBySelectedDate(@PathVariable LocalDate selectedDate) {
+        return new ResponseEntity<>(damScheduleApplication.listBySelectedDate(selectedDate), HttpStatus.OK);
     }
 
     @GetMapping("/{damScheduleId}")
