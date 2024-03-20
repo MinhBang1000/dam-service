@@ -23,6 +23,14 @@ public class RetrieveDamScheduleBySelectedDateResDTO {
     private Double longitude;
     @JsonProperty("damLatitude")
     private Double latitude;
+    @JsonProperty("damDescription")
+    private String description;
+    @JsonProperty("damHeight")
+    private Double height;
+    @JsonProperty("damCapacity")
+    private Integer capacity;
+    @JsonProperty("damRiverName")
+    private String riverName;
     @JsonProperty("damSchedulesAtThisDate")
     private List<RetrieveDamScheduleShorterVersionResDTO> damSchedules;
 }
