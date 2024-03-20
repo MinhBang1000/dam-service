@@ -14,6 +14,10 @@ public class RetrieveDamScheduleBySelectedDateMapper implements IMapper<Dam, Ret
                 .name(source.getName())
                 .longitude(source.getLongitude())
                 .latitude(source.getLatitude())
+                .capacity(source.getCapacity())
+                .height(source.getHeight())
+                .riverName(source.getRiver().getName())
+                .description(source.getDescription())
                 .build();
     }
 }
