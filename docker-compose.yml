@@ -1,0 +1,32 @@
+version: "2.10.2"
+services:
+  dms-postgres-db:
+   image: postgres
+   container_name: dms-postgres-db
+   env_file:
+     - .env
+   ports:
+     - '5433:5432'
+   networks:
+     - dms-net
+   restart: always
+  dms-service:
+    image: dam-service:1.0.0
+    container_name: dms-service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    ports:
+      - '8081:8081'
+      - '5005:5005'
+    networks:
+      - dms-net
+    depends_on:
+      - dms-postgres-db
+networks:
+  dms-net:
+    name: dms-net
+    attachable: true
+    driver: bridge
