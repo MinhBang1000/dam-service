@@ -28,7 +28,7 @@ public class RetrieveDamScheduleBySelectedDateResDTO {
     @JsonProperty("damHeight")
     private Double height;
     @JsonProperty("damCapacity")
-    private Integer capacity;
+    private Double capacity;
     @JsonProperty("damRiverName")
     private String riverName;
     @JsonProperty("damSchedulesAtThisDate")

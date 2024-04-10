@@ -30,7 +30,7 @@ public class Dam {
     @Column(name = "dam_height")
     private Double height;
     @Column(name = "dam_capacity")
-    private Integer capacity;
+    private Double capacity;
     @Column(name = "dam_longitude")
     private Double longitude;
     @Column(name = "dam_latitude")

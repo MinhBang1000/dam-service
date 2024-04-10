@@ -32,7 +32,7 @@ public class CreateDamReqDTO {
 
     @JsonProperty("damCapacity")
     @NotNull(message = "The dam capacity should not be null")
-    private Integer capacity;
+    private Double capacity;
 
     @NotNull(message = "The dam longitude should not be null")
     @JsonProperty("damLongitude")
