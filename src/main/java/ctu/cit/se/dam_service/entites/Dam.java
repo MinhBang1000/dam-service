@@ -45,4 +45,14 @@ public class Dam {
     private List<DamSchedule> damSchedules = new ArrayList<>();
     @OneToMany(mappedBy = "dam", cascade = CascadeType.ALL)
     private List<DamLocation> damLocations = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "Dam{" +
+                "river=" + river.getName() +
+                ", damType=" + damType.getName() +
+                ", id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

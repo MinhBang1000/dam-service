@@ -17,4 +17,5 @@ public interface IRiverDAO {
     List<RetrieveRiverResDTO> list();
     RetrieveRiverResDTO retrieve(UUID riverId);
     void delete(UUID riverId);
+    void initData(List<CreateRiverReqDTO> createRiverReqDTOS);
 }

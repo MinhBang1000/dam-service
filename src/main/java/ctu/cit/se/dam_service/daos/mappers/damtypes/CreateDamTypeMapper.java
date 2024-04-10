@@ -10,6 +10,7 @@ public class CreateDamTypeMapper implements IMapper<CreateDamTypeReqDTO, DamType
     @Override
     public DamType convert(CreateDamTypeReqDTO source) {
         return DamType.builder()
+                .code("normal")
                 .name(source.getName())
                 .description(source.getDescription())
                 .build();

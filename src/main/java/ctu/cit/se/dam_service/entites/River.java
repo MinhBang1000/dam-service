@@ -20,6 +20,8 @@ public class River {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+    @Column(name = "river_code")
+    private String code;
     @Column(name = "river_name", nullable = false)
     private String name;
     @Column(name = "river_location", nullable = false)

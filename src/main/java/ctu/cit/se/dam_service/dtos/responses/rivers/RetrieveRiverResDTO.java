@@ -14,6 +14,8 @@ import lombok.NoArgsConstructor;
 public class RetrieveRiverResDTO {
     @JsonProperty("riverId")
     private String id;
+    @JsonProperty("riverCode")
+    private String code;
     @JsonProperty("riverName")
     private String name;
     @JsonProperty("riverLocation")

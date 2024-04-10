@@ -20,6 +20,7 @@ public class UpdateDamTypeMapper implements IMapper<UpdateDamTypeReqDTO, DamType
     public DamType convert(UpdateDamTypeReqDTO source) {
         var damType = damTypeRepository.findById(UUID.fromString(source.getId())).orElseThrow(() -> new IllegalArgumentException(CustomExceptionMessage.DAM_TYPE_NOT_FOUND_BY_ID));
         return DamType.builder()
+                .code("normal")
                 .id(damType.getId())
                 .name(Objects.isNull(source.getName()) ? damType.getName() : source.getName())
                 .description(Objects.isNull(source.getDescription()) ? damType.getDescription() : source.getDescription())

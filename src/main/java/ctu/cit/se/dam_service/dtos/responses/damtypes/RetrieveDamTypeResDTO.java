@@ -13,6 +13,8 @@ import lombok.NoArgsConstructor;
 public class RetrieveDamTypeResDTO {
     @JsonProperty("damTypeId")
     private String id;
+    @JsonProperty("damTypeCode")
+    private String code;
     @JsonProperty("damTypeName")
     private String name;
     @JsonProperty("damTypeDescription")

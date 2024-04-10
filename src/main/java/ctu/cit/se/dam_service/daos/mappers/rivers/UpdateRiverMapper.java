@@ -24,6 +24,7 @@ public class UpdateRiverMapper implements IMapper<UpdateRiverReqDTO, River> {
                 .name(Objects.isNull(source.getName()) ? river.getName() : source.getName())
                 .location(Objects.isNull(source.getLocation()) ? river.getLocation() : source.getLocation())
                 .latitude(Objects.isNull(source.getLatitude()) ? river.getLatitude() : source.getLatitude())
+                .code("normal")
                 .longitude(Objects.isNull(source.getLongitude()) ? river.getLongitude() : source.getLongitude())
                 .build();
     }
