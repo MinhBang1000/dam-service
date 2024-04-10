@@ -17,4 +17,5 @@ public interface IDamTypeDAO {
     List<RetrieveDamTypeResDTO> list();
     RetrieveDamTypeResDTO retrieve(UUID damTypeId);
     void delete(UUID damTypeId);
+    void initData(List<CreateDamTypeReqDTO> createDamTypeReqDTOS);
 }

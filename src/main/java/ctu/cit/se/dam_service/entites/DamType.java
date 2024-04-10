@@ -20,6 +20,8 @@ public class DamType {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+    @Column(name = "dam_type_code")
+    private String code;
     @Column(name = "dam_type_name", nullable = false)
     private String name;
     @Column(name = "dam_type_description")
