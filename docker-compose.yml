@@ -6,7 +6,7 @@ services:
    env_file:
      - .env
    ports:
-     - '5433:5432'
+     - '5434:5432'
    networks:
      - dms-net
    restart: always
@@ -19,7 +19,7 @@ services:
     env_file:
       - .env
     ports:
-      - '8081:8081'
+      - '8082:8081'
       - '5005:5005'
     networks:
       - dms-net
