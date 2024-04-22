@@ -1,34 +1,91 @@
 # Overview
-Production process management service for agriculture and aquaculture.
+Dam service provide a set of Apis to manage dam information and dam opening schedules
 # Required:
 ```diff
 + Docker.
 + Maven.
 + JDK 17 and above.
 ```
-# Deployment
-#### After cloning the repository, do the following steps:
-1. Navigate to project root.
+# Installation:
+## 1. application.properties
+PATH: <your_project>/src/main/resources/application.properties
 ```java
-{YOUR-WORKDIR}/ppm-service/
+server.port=<service_port>
+spring.datasource.url=jdbc:postgresql://<db_host>:<db_port>/<db_name>
+spring.datasource.username=<db_username>
+spring.datasource.password=<db_password>
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto=update
+management.endpoints.web.exposure.include=*
 ```
-1. Build project.
+## 2. .env
+PATH: .env
 ```java
-mvn clean install
+POSTGRES_USER=<db_username>
+POSTGRES_PASSWORD=<db_password>
+POSTGRES_DB=<db_name>
 ```
-3. Build the application's Docker image.
+## 3. Dockerfile
+PATH: ./Dockerfile
 ```java
-docker build -t ppm-service:{VERSION} .
+FROM openjdk:17
+
+COPY ./target/<your_built_file>.jar /app/<your_built_file>.jar
+
+WORKDIR /app/
+
+EXPOSE 8082
+EXPOSE 5005
+
+CMD [ "java", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005", "-jar", "/app/<your_built_file>.jar" ]
 ```
-4. Create Docker network (for first-time deployment).
-```
-docker network create ppm-net
-```
-5. Run dependency PostgreSQL by launching the official Postgres Docker image.
+## 4. docker-compose.yml
+PATH: ./docker-compose.yml <br/>
+It's just an example, all values in this file can be edited based on your local machine or your customization.
 ```java
-docker run --network ppm-net -p {DB_HOST_PORT}:5432 -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=ctu!@# -e POSTGRES_DB=ppm-db --name=ppm-postgres-db postgres
+version: "2.10.2"
+services:
+  dms-postgres-db:
+   image: postgres
+   container_name: dms-postgres-db
+   env_file:
+     - .env
+   ports:
+     - '5434:5432'
+   networks:
+     - dms-net
+   restart: always
+  dms-service:
+    image: dam-service:1.0.0
+    container_name: dms-service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    ports:
+      - '8082:8081'
+      - '5005:5005'
+    networks:
+      - dms-net
+    depends_on:
+      - dms-postgres-db
+networks:
+  dms-net:
+    name: dms-net
+    attachable: true
+    driver: bridge
 ```
-6. Run the application.
+
+# Deployment:
+## 1. Build & Start
 ```java
-docker run --network ppm-net -p {APP_HOST_PORT}:8081 --name=ppm-service ppm-service:{VERSION}
+docker compose up
+```
+## 2. Stop & Remove
+Deleting an image in your docker desktop is necessary, if you want to build it again. 
+```java
+Ctrl + C 
+or 
+docker compose down
 ```
