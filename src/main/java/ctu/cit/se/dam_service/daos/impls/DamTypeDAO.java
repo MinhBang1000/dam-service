@@ -59,4 +59,18 @@ public class DamTypeDAO implements IDamTypeDAO {
         var damType = damTypeRepository.findById(damTypeId).orElseThrow(() -> new IllegalArgumentException(CustomExceptionMessage.DAM_TYPE_NOT_FOUND_BY_ID));
         damTypeRepository.delete(damType);
     }
+
+    @Override
+    public void createInitData(List<DamType> damTypes) {
+        boolean flag = true;
+        var damTypeList = damTypeRepository.findAll();
+        for (DamType damType : damTypeList) {
+            if (damType != null && damType.getCode() != null) {
+                flag = false;
+            }
+        }
+        if (flag) {
+            damTypeRepository.saveAll(damTypes);
+        }
+    }
 }

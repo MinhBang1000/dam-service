@@ -15,6 +15,8 @@ public class RetrieveDamTypeResDTO {
     private String id;
     @JsonProperty("damTypeName")
     private String name;
+    @JsonProperty("damTypeCode")
+    private String code;
     @JsonProperty("damTypeDescription")
     private String description;
 }

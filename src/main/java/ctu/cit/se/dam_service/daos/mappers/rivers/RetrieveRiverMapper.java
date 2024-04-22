@@ -12,6 +12,7 @@ public class RetrieveRiverMapper implements IMapper<River, RetrieveRiverResDTO> 
         return RetrieveRiverResDTO.builder()
                 .id(source.getId().toString())
                 .name(source.getName())
+                .code(source.getCode())
                 .location(source.getLocation())
                 .latitude(source.getLatitude())
                 .longitude(source.getLongitude())
