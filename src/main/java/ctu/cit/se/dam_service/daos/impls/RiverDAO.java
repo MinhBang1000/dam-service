@@ -59,4 +59,19 @@ public class RiverDAO implements IRiverDAO {
         var river = riverRepository.findById(riverId).orElseThrow(() -> new IllegalArgumentException(CustomExceptionMessage.RIVER_NOT_FOUND_BY_ID));
         riverRepository.delete(river);
     }
+
+    @Override
+    public void createInitData(List<River> rivers) {
+        boolean flag = true;
+        var riverList = riverRepository.findAll();
+        for (River river : riverList) {
+            if (river != null && river.getCode() != null) {
+                flag = false;
+            }
+        }
+        if (flag) {
+            riverRepository.saveAll(rivers);
+        }
+    }
+
 }

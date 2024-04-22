@@ -12,6 +12,7 @@ public class RetrieveDamTypeMapper implements IMapper<DamType, RetrieveDamTypeRe
         return RetrieveDamTypeResDTO.builder()
                 .id(source.getId().toString())
                 .name(source.getName())
+                .code(source.getCode())
                 .description(source.getDescription())
                 .build();
     }

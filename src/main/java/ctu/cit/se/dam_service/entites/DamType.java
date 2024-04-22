@@ -22,6 +22,8 @@ public class DamType {
     private UUID id;
     @Column(name = "dam_type_name", nullable = false)
     private String name;
+    @Column(name = "dam_type_code")
+    private String code;
     @Column(name = "dam_type_description")
     private String description;
     @OneToMany(mappedBy = "damType", cascade = CascadeType.ALL)

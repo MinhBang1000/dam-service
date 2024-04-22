@@ -16,6 +16,8 @@ public class RetrieveRiverResDTO {
     private String id;
     @JsonProperty("riverName")
     private String name;
+    @JsonProperty("riverCode")
+    private String code;
     @JsonProperty("riverLocation")
     private String location;
     @JsonProperty("riverLatitude")
