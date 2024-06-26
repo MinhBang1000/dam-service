@@ -43,7 +43,8 @@ public class RetrieveDamMapper implements IMapper<Dam, RetrieveDamResDTO> {
         Boolean openStatus = false;
         DamStatus damStatus = DamStatus.builder().name("CLOSE").build();
         var damSchedules = damScheduleRepository.findAllByDamIdAndIsLock(source.getId(),false);
-        if (!damSchedules.stream().filter(damSchedule -> damSchedule.getBeginAt().isBefore(now) && damSchedule.getEndAt().isAfter(now)).collect(Collectors.toList()).isEmpty()) {
+        /* Retrieve Dam Current Status */
+        if (damSchedules.stream().filter(damSchedule -> damSchedule.getBeginAt().isBefore(now) && damSchedule.getEndAt().isAfter(now)).collect(Collectors.toList()).isEmpty()) {
             openStatus = true;
         }
         if (openStatus) {
