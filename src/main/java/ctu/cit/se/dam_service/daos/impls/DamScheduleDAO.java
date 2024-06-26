@@ -101,28 +101,24 @@ public class DamScheduleDAO implements IDamScheduleDAO {
             }
             RetrieveDamScheduleBySelectedDateResDTO retrieveDamScheduleBySelectedDateResDTO = retrieveBySelectedDateMapper.convert(dam);
             retrieveDamScheduleBySelectedDateResDTO.setDamSchedules(retrieveDamScheduleShorterVersionResDTOS);
-            Boolean currentStatus = false;
-            DamStatus damStatus = DamStatus.builder().name("CLOSE").build();
+            Boolean currentStatus = true;
+            DamStatus damStatus = DamStatus.builder().name("OPEN").build();
             if (!retrieveDamScheduleShorterVersionResDTOS.isEmpty()) {
-                currentStatus = true;
+                /* If the list above is not empty, it closes "CLOSE". Empty --> "OPEN" (default status) */
+                /*
+                *  False --> Close
+                *  True --> Open
+                * */
+                currentStatus = false;
             }
             if (currentStatus) {
-                try {
-                    var damOpenStatus = damStatusRepository.findByName("OPEN").get();
-                    damStatus = damOpenStatus;
-                }catch (Exception ex) {
-                    damStatus.setName("OPEN");
-                    var damOpenStatus = damStatusRepository.save(damStatus);
-                    damStatus = damOpenStatus;
-                }
+                String damStatusName = "OPEN";
+                var damOpenStatus = damStatusRepository.findByName(damStatusName).orElse(null);
+                damStatus = Objects.nonNull(damOpenStatus) ? damOpenStatus : damStatusRepository.save(DamStatus.builder().name(damStatusName).build());
             }else {
-                try {
-                    var damCloseStatus = damStatusRepository.findByName("CLOSE").get();
-                    damStatus = damCloseStatus;
-                }catch (Exception ex) {
-                    var damCloseStatus = damStatusRepository.save(damStatus);
-                    damStatus = damCloseStatus;
-                }
+                String damStatusName = "CLOSE";
+                var damCloseStatus = damStatusRepository.findByName(damStatusName).orElse(null);
+                damStatus = Objects.nonNull(damCloseStatus) ? damCloseStatus : damStatusRepository.save(DamStatus.builder().name(damStatusName).build());
             }
             retrieveDamScheduleBySelectedDateResDTO.setStatusName(damStatus.getName());
             return retrieveDamScheduleBySelectedDateResDTO;

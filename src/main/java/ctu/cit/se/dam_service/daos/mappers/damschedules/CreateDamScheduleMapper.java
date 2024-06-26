@@ -25,12 +25,13 @@ public class CreateDamScheduleMapper implements IMapper<CreateDamScheduleReqDTO,
     public DamSchedule convert(CreateDamScheduleReqDTO source) {
         var dam = damRepository.findById(UUID.fromString(source.getDamId())).orElseThrow(() -> new IllegalArgumentException(CustomExceptionMessage.DAM_NOT_FOUND_BY_ID));
         DamStatus damStatus = DamStatus.builder().build();
+        /* Create dam schedule with a specific dam status - CLOSE instead of OPEN */
         if (Objects.isNull(source.getDamStatusId())) {
             try {
-                DamStatus existedDamStatus = damStatusRepository.findByName("OPEN").get();
+                DamStatus existedDamStatus = damStatusRepository.findByName("CLOSE").get();
                 damStatus = existedDamStatus;
             }catch (Exception ex) {
-                damStatus.setName("OPEN");
+                damStatus.setName("CLOSE");
                 damStatus = damStatusRepository.save(damStatus);
             }
         }else {
