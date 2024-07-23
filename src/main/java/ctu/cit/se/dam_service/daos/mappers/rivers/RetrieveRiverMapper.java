@@ -16,6 +16,11 @@ public class RetrieveRiverMapper implements IMapper<River, RetrieveRiverResDTO> 
                 .location(source.getLocation())
                 .latitude(source.getLatitude())
                 .longitude(source.getLongitude())
+                .nearestProcessingAt(source.getNearestProcessingAt())
+                .width(source.getWidth())
+                .length(source.getLength())
+                .address(source.getAddress())
+                .level(source.getLevel())
                 .build();
     }
 }

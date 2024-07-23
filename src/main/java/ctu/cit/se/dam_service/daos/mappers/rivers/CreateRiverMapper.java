@@ -14,6 +14,11 @@ public class CreateRiverMapper implements IMapper<CreateRiverReqDTO, River> {
                 .location(source.getLocation())
                 .latitude(source.getLatitude())
                 .longitude(source.getLongitude())
+                .length(source.getLength())
+                .width(source.getWidth())
+                .level(source.getLevel())
+                .nearestProcessingAt(source.getNearestProcessingAt())
+                .address(source.getAddress())
                 .build();
     }
 }

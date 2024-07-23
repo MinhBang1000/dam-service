@@ -7,6 +7,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -24,4 +27,14 @@ public class RetrieveRiverResDTO {
     private String latitude;
     @JsonProperty("riverLongitude")
     private String longitude;
+    @JsonProperty("riverLevel")
+    private String level;
+    @JsonProperty("riverAddress")
+    private String address;
+    @JsonProperty("riverNearestProcessingAt")
+    private LocalDate nearestProcessingAt;
+    @JsonProperty("riverLength")
+    private Double length;
+    @JsonProperty("riverWidth")
+    private Double width;
 }
