@@ -25,6 +25,11 @@ public class UpdateRiverMapper implements IMapper<UpdateRiverReqDTO, River> {
                 .location(Objects.isNull(source.getLocation()) ? river.getLocation() : source.getLocation())
                 .latitude(Objects.isNull(source.getLatitude()) ? river.getLatitude() : source.getLatitude())
                 .longitude(Objects.isNull(source.getLongitude()) ? river.getLongitude() : source.getLongitude())
+                .address(Objects.isNull(source.getAddress()) ? river.getAddress() : source.getAddress())
+                .level(Objects.isNull(source.getLevel()) ? river.getLevel() : source.getLevel())
+                .length(Objects.isNull(source.getLength()) ? river.getLength() : source.getLength())
+                .width(Objects.isNull(source.getWidth()) ? river.getWidth() : source.getWidth())
+                .nearestProcessingAt(Objects.isNull(source.getNearestProcessingAt()) ? river.getNearestProcessingAt() : source.getNearestProcessingAt())
                 .build();
     }
 }

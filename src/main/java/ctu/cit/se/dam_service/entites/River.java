@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -30,6 +32,16 @@ public class River {
     private String latitude;
     @Column(name = "river_longitude", nullable = false)
     private String longitude;
+    @Column(name = "river_length")
+    private Double length;
+    @Column(name = "river_width")
+    private Double width;
+    @Column(name = "river_level")
+    private String level;
+    @Column(name = "river_address")
+    private String address;
+    @Column(name = "river_nearest_processing_at")
+    private LocalDate nearestProcessingAt;
     @OneToMany(mappedBy = "river", cascade = CascadeType.ALL)
     private List<Dam> dams = new ArrayList<>();
     @OneToMany(mappedBy = "river", cascade = CascadeType.ALL)
